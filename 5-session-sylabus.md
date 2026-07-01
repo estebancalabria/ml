@@ -83,4 +83,3 @@
 - Next steps for further learning
 - In-class integrative mini-project
 
-Note: this is now 5 sessions again (Matplotlib absorbed the extra slot, integration folded into Session 5). If you wanted 6 sessions with a separate closing session, let me know.

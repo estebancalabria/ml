@@ -163,4 +163,31 @@ plt.legend()
 
 plt.show()
 ```
-     
+* Miremos este grafico
+
+<img width="1309" height="609" alt="image" src="https://github.com/user-attachments/assets/3fe94224-2fff-4371-9d18-9baed02485a1" />
+
+* Vamos a suponer que entrenamos a un algotirmo de ML para que me haga una formula para predecir el resultado en funcion de las horas de estudio
+   * Opcion 1 (Roja) - Regresion Lineal - Apromaximacion
+   * Opcion 2 (Azul) - Modelo Mas complejo - Funciona perfecto para los datos de prueba
+
+* Variables
+   * Horas de estudio (Feature)
+   * Nota (Label) <- Variable que quiero predecir
+ 
+* Conceptos
+   * Datos de Entrenamiento (Puntos Negros)
+   * Datos de Prueba / Nuevos (Puntos Verdes)
+ 
+* Algoritmo de ML al que le damos los datos conocidos y en este caso nos devuelve un formula para relacionar ambas variables
+   * Algoritmo 1 : Regresion Lineal (aproxima todo a un recta)
+   * Algotimo 2: Genera un funcion de aproximacion mas compleja que pasa por todos los datos de entrenamiento
+
+* (Datos de entenamiento) -> (Algotimo de ML 1)  ->  (Formula lineal que relaciona las variables) (Modelo 1)
+                          -> (Algotimo de ML 2)  ->  (Formula compleja que relaciona las variables) (Modelo 2)
+
+* Datos de Prueba
+   * Apare la idea de Error. La distancia entre lo que tendria que dar segun el modelo y la realidad
+ 
+> [!NOTE]
+> A pesar de que la formula compleja predecia perfectamente los datos de entrenamiento, al momento de aplicarla con datos reales la formula lineal era mas generalizable, me daba mejores predicciones a la larga

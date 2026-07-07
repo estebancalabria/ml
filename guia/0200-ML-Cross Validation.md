@@ -636,8 +636,5 @@ Esto permite:
 >
 > Su objetivo es obtener una estimación más realista de cómo funcionará el modelo cuando aparezcan datos nuevos. 🚀
 
-Pedagógicamente, Esteban, esta clase encaja perfectamente después de tu clase de **Training Data / Testing Data / Generalización**. De hecho, yo recuperaría explícitamente el ejemplo de la **línea negra vs curva verde** y diría:
-
-> "La semana pasada aprendimos a separar Training y Testing. Hoy veremos que una sola separación puede engañarnos, y cómo Cross Validation resuelve ese problema."
 
 Así queda una transición muy natural dentro del recorrido del curso.

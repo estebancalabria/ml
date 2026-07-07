@@ -1,402 +1,686 @@
-# Clase: Introducción al Machine Learning
+# Clase: Introducción Suave al Machine Learning
 
 ## Objetivos
 
-Al finalizar esta clase los estudiantes deberían ser capaces de:
+Al finalizar esta clase los estudiantes serán capaces de:
 
-- Comprender qué es Machine Learning.
-- Diferenciar clasificación y regresión.
-- Entender qué son los datos de entrenamiento y prueba.
-- Comprender por qué un modelo que aprende "demasiado" no siempre es el mejor.
-- Entender que el objetivo del Machine Learning es generalizar y no memorizar.
+* Comprender qué es Machine Learning.
+* Diferenciar clasificación y regresión.
+* Entender el propósito de los datos de entrenamiento y prueba.
+* Comprender por qué un modelo muy complejo no necesariamente es mejor.
+* Entender la idea de generalización.
+* Comprender la importancia de evaluar modelos con datos nuevos.
 
----
+## Secuencia
+
+```
+Árbol de decisión
+        ↓
+Clasificación
+        ↓
+Regresión (línea negra)
+        ↓
+Training Data
+        ↓
+Línea negra vs curva verde
+        ↓
+Testing Data
+        ↓
+Calcular errores
+        ↓
+Comparar errores
+        ↓
+Generalización
+        ↓
+Volver al árbol
+        ↓
+Conclusión
+```
+
+
+***
 
 # ¿Qué es Machine Learning?
 
-Una definición muy simple sería:
+Cuando la gente escucha "Machine Learning" suele pensar en:
 
-> Machine Learning consiste en entrenar un algoritmo utilizando ejemplos para que pueda realizar predicciones o clasificaciones sobre datos nuevos.
+* Inteligencia Artificial
+* Redes neuronales
+* Algoritmos complejos
+* Grandes volúmenes de datos
 
-Es decir, en lugar de programar reglas manualmente, dejamos que el algoritmo descubra los patrones presentes en los datos.
+Pero la idea fundamental es mucho más simple.
 
----
+> Machine Learning consiste en utilizar ejemplos para construir modelos capaces de realizar predicciones o clasificaciones sobre datos nuevos.
 
-# Ejemplo 1: Clasificación
+Toda la clase de hoy gira alrededor de esta definición.
 
-Vamos a comenzar con un ejemplo muy sencillo.
+***
 
-Supongamos que queremos construir un sistema que determine si un estudiante **aprobará** o **no aprobará** un examen.
+# Parte 1 — Un Árbol de Decisión
 
-Para cada estudiante conocemos:
+Supongamos que queremos predecir si una persona disfrutará un curso de Machine Learning.
 
-- Horas de estudio
-- Cantidad de ejercicios resueltos
+Podemos hacer algunas preguntas.
 
-Y también sabemos el resultado final.
+## Mostrar árbol
+
+```text
+¿Te gusta programar?
+
+        Sí
+         │
+         ▼
+
+¿Te gusta resolver problemas?
+
+     Sí                No
+      │                 │
+      ▼                 ▼
+
+Le gustará        No le gustará
+el curso          el curso
+```
+
+***
+
+## ¿Qué está haciendo el árbol?
+
+El árbol observa respuestas y termina realizando una predicción.
+
+La salida solamente puede ser:
+
+* Sí
+* No
+
+No existen valores intermedios.
+
+***
+
+# Clasificación
+
+Cuando un algoritmo asigna una categoría estamos ante un problema de:
+
+# Clasificación
+
+Ejemplos:
+
+* Spam / No spam
+* Fraude / No fraude
+* Enfermo / Sano
+* Aprobado / Suspendido
+* Le gusta el curso / No le gusta
+
+***
+
+## Primera idea importante
+
+Este árbol es una forma de Machine Learning.
+
+Porque utiliza ejemplos para construir reglas que permiten clasificar nuevos casos.
+
+***
+
+# Parte 2 — Predicción Numérica (Regresión)
+
+Veamos ahora otro problema.
+
+Supongamos que disponemos de información de alumnos anteriores.
+
+Para cada alumno conocemos:
+
+* Horas de estudio
+* Nota obtenida
+
+***
 
 ## Mostrar gráfico
 
-```
-Ejercicios
+```text
+Nota
 
-5 |                     ●
-4 |
-3 |             ●
-2 |
-1 |  ○
+10 |                         ●
+ 9 |
+ 8 |                    ●
+ 7 |
+ 6 |              ●
+ 5 |
+ 4 |        ●
+ 3 |
+ 2 |  ●
 
-   +------------------------
-      1      2      3      4
-           Horas
+    +--------------------------
+      1   2   3   4   5   6
 
-○ No aprobó
-● Aprobó
-```
-
-Explicar:
-
-Cada punto representa un estudiante.
-
-Todavía no existe ningún modelo.
-
-Solamente tenemos ejemplos.
-
----
-
-# ¿Qué hace Machine Learning?
-
-El algoritmo observa todos estos ejemplos e intenta encontrar un patrón que permita separar ambas categorías.
-
-## Mostrar gráfico
-
-```
-Ejercicios
-
-5 |                     ●
-4 |
-3 |---------------------------
-2 |
-1 |  ○
-
-   +------------------------
+       Horas de estudio
 ```
 
-Explicar:
+Cada punto representa un alumno.
 
-El algoritmo busca una frontera que permita distinguir ambas clases.
+***
 
-Una vez encontrada esa frontera podremos clasificar nuevos estudiantes.
+## ¿Qué observamos?
 
----
+A medida que aumentan las horas de estudio:
 
-# Clasificando un nuevo estudiante
+→ La nota tiende a aumentar.
 
-Supongamos que aparece un estudiante nuevo.
+Existe una tendencia.
 
-## Mostrar gráfico
+***
 
+## Ajustando una línea
+
+Podemos representar esa tendencia mediante una línea.
+
+```text
+Nota
+
+10 |                         ●
+ 9 |                       /
+ 8 |                    ●/
+ 7 |                  /
+ 6 |              ● /
+ 5 |            /
+ 4 |        ● /
+ 3 |      /
+ 2 |  ● /
+
+    +--------------------------
+      1   2   3   4   5   6
+
+       Horas de estudio
 ```
-Ejercicios
 
-5 |                     ●
-4 |
-3 |---------------------------
-2 |            ★
-1 |  ○
+***
 
-   +------------------------
+## Realizando una predicción
+
+Aparece un alumno nuevo.
+
+Sabemos que estudió 4 horas.
+
+Queremos estimar qué nota podría obtener.
+
+```text
+Nota
+
+10 |
+ 9 |
+ 8 |
+ 7 |
+ 6 |            ★
+ 5 |
+ 4 |
+ 3 |
+
+    +--------------------------
+      1   2   3   4   5   6
 ```
 
-Preguntar a la clase:
-
-**¿De qué lado quedó?**
-
-Como quedó debajo de la frontera, el modelo predice:
-
-> No aprobará.
-
-Eso es una clasificación.
-
----
-
-# Ejemplo 2: Predicción
-
-Machine Learning también puede utilizarse para predecir valores numéricos.
+Utilizamos la línea para realizar una predicción.
 
 Por ejemplo:
 
-Queremos estimar el precio de una casa.
+> El modelo predice una nota cercana a 6,5.
 
-Conocemos:
+***
 
-- Metros cuadrados
-- Precio
+# Regresión
 
-## Mostrar gráfico
+En este caso la salida no es una categoría.
 
-```
-Precio
+La salida es un número.
 
-350 |
-300 |                  ●
-250 |
-200 |           ●
-150 |     ●
+Por eso estamos ante un problema de:
 
-   +------------------------
-     50   80  120  150
+# Regresión
 
-        Metros cuadrados
-```
+***
 
-El algoritmo ajusta una línea que representa la tendencia.
+# Resumiendo
 
----
+Hasta ahora hemos visto dos tipos de problemas.
 
-# Realizando una predicción
+| Problema      | Resultado         |
+| ------------- | ----------------- |
+| Clasificación | Categorías        |
+| Regresión     | Valores numéricos |
 
-Supongamos ahora que aparece una casa de 100 m².
+***
 
-## Mostrar gráfico
+## Idea central
 
-```
-Precio
+Gran parte del Machine Learning consiste en resolver uno de estos dos problemas:
 
-350 |
-300 |                 ●
-250 |              /
-200 |          ●  /
-150 |      ●  /
-100 |       ★
+* Clasificar
+* Predecir valores
 
-   +------------------------
-```
+***
 
-La línea permite estimar aproximadamente el precio de esa nueva vivienda.
+# Parte 3 — Datos de Entrenamiento
 
-Esto ya no es clasificación.
+Los ejemplos que usamos para construir un modelo reciben un nombre.
 
-Es una predicción numérica (regresión).
+# Training Data
 
----
+o
 
-# Idea principal
+# Datos de Entrenamiento
 
-En términos generales:
+***
 
-Machine Learning sirve para realizar:
+En nuestro ejemplo:
 
-- Clasificaciones
-- Predicciones
+Los alumnos utilizados para dibujar la línea son Training Data.
 
-Prácticamente todos los algoritmos buscan resolver uno de estos dos problemas.
-
----
-
-# Datos de entrenamiento
-
-Hasta ahora usamos únicamente ejemplos.
-
-Esos ejemplos reciben un nombre.
-
-Se llaman:
-
-> **Training Data**
-
-Son los datos utilizados para entrenar el modelo.
-
-## Mostrar gráfico
-
-```
-Training Data
-
-●   ●   ●
-
-○   ○   ○
+```text
+● ● ● ● ●
 ```
 
-El algoritmo aprende únicamente observando estos datos.
+***
 
----
+## ¿Qué hace el modelo?
 
-# ¿Cómo sabemos si el modelo realmente aprendió?
+Observa esos ejemplos.
 
-Acá aparece un problema.
+Y aprende patrones.
 
-Supongamos que entrenamos dos modelos.
+***
 
-Modelo A:
+# Parte 4 — Dos Modelos Distintos
+
+Supongamos ahora que entrenamos dos modelos diferentes.
+
+***
+
+## Modelo A
 
 Una línea simple.
 
-Modelo B:
+```text
+Nota
 
-Una curva extremadamente compleja que pasa exactamente por todos los puntos.
+10 |                    ●
+ 9 |
+ 8 |                ●
+ 7 |
+ 6 |            ●
+ 5 |
+ 4 |        ●
+ 3 |
+ 2 |    ●
 
-## Mostrar gráfico
-
-Modelo A
-
-```
-●
-
-      ●
-
-           ○
-
----------------
+     -----------------
 ```
 
-Modelo B
+***
 
-```
-●~~~~~
+## Modelo B
 
-     ●~~~~~~
+Una curva muy compleja.
 
-           ○~~~~~
-```
+```text
+Nota
 
-A simple vista parecería que el segundo modelo es mejor.
-
-Después de todo, pasa exactamente por todos los puntos.
-
-Pero...
-
-¿Realmente aprendió?
-
----
-
-# Datos de prueba
-
-Para responder esa pregunta utilizizamos otro conjunto de datos.
-
-Estos datos nunca fueron utilizados durante el entrenamiento.
-
-Se llaman:
-
-> **Testing Data**
-
-## Mostrar gráfico
-
-```
-Training
-
-● ● ● ○ ○ ○
-
-↓
-
-Modelo
-
-↓
-
-Testing
-
-● ○ ●
+10 |                 ~~●
+ 9 |           ~~~~~~
+ 8 |        ●~
+ 7 |~~~~~~~
+ 6 |      ●~
+ 5 |
+ 4 | ●~~~
 ```
 
----
+***
 
-# Evaluando ambos modelos
+## Pregunta para la clase
 
-Ahora hacemos que ambos modelos intenten predecir los datos de Testing.
+¿Cuál parece mejor?
 
-Modelo A
+La mayoría responderá:
 
+> La curva.
+
+Porque pasa exactamente por todos los puntos.
+
+***
+
+# Pero...
+
+Recordemos algo.
+
+El objetivo del Machine Learning no es explicar perfectamente los datos antiguos.
+
+El objetivo es:
+
+> Realizar predicciones sobre datos nuevos.
+
+***
+
+# Parte 5 — Datos de Prueba
+
+Necesitamos nuevos alumnos.
+
+Alumnos que no participaron del entrenamiento.
+
+Estos datos reciben el nombre de:
+
+# Testing Data
+
+o
+
+# Datos de Prueba
+
+***
+
+## Resumen
+
+Training Data
+
+```text
+● ● ● ● ●
 ```
-Predicción
 
-● ✔
+Sirve para aprender.
 
-○ ✔
+***
 
-● ✔
+Testing Data
+
+```text
+★ ★ ★ ★
 ```
 
-Modelo B
+Sirve para evaluar.
 
+***
+
+# Parte 6 — Probando la Línea
+
+Alumno 1
+
+```text
+Nota real = 8
+Predicción = 7
+
+Error = 1
 ```
-Predicción
 
-● ✖
+***
 
-○ ✔
+Alumno 2
 
-● ✖
+```text
+Nota real = 6
+Predicción = 7
+
+Error = 1
 ```
 
-Explicar:
+***
 
-Aunque el segundo modelo aprendió perfectamente los datos de entrenamiento, falla cuando aparecen datos nuevos.
+Alumno 3
 
----
+```text
+Nota real = 9
+Predicción = 8
+
+Error = 1
+```
+
+***
+
+Alumno 4
+
+```text
+Nota real = 7
+Predicción = 7
+
+Error = 0
+```
+
+***
+
+## Error total
+
+```text
+1 + 1 + 1 + 0 = 3
+```
+
+***
+
+# Parte 7 — Probando la Curva
+
+Alumno 1
+
+```text
+Nota real = 8
+Predicción = 6
+
+Error = 2
+```
+
+***
+
+Alumno 2
+
+```text
+Nota real = 6
+Predicción = 9
+
+Error = 3
+```
+
+***
+
+Alumno 3
+
+```text
+Nota real = 9
+Predicción = 7
+
+Error = 2
+```
+
+***
+
+Alumno 4
+
+```text
+Nota real = 7
+Predicción = 10
+
+Error = 3
+```
+
+***
+
+## Error total
+
+```text
+2 + 3 + 2 + 3 = 10
+```
+
+***
+
+# Comparación Final
+
+```text
+Modelo A (línea)  = Error 3
+
+Modelo B (curva)  = Error 10
+```
+
+***
 
 # ¿Qué ocurrió?
 
-El segundo modelo memorizó los ejemplos.
+La curva aprendió perfectamente los datos de entrenamiento.
 
-No aprendió el patrón general.
+Pero se equivocó más con datos nuevos.
 
-Cuando llegaron datos nuevos comenzó a equivocarse.
+La línea simple aprendió mejor la tendencia general.
 
-Este fenómeno recibe el nombre de:
+Por eso hizo mejores predicciones.
 
-> **Overfitting**
+***
 
-Lo veremos con mucho más detalle en otra clase.
+# Enseñanza Fundamental
 
-Por ahora basta con comprender la idea.
+No gana el modelo que mejor funciona con Training Data.
 
----
+Gana el modelo que mejor funciona con Testing Data.
 
-# Una enseñanza muy importante
+Esta es una de las ideas más importantes de todo Machine Learning.
 
-Cuando trabajamos con Machine Learning...
+***
 
-No gana el modelo que mejor funciona con Training.
+# Overfitting
 
-Gana el modelo que mejor funciona con Testing.
+Cuando un modelo aprende demasiado los datos de entrenamiento:
 
-Porque nuestro objetivo es predecir correctamente datos que todavía no conocemos.
+* Memoriza ejemplos
+* Aprende ruido
+* Pierde capacidad de generalización
 
----
+Decimos que existe:
 
-# ¿Importa el algoritmo?
+# Overfitting
 
-Hoy existen muchísimos algoritmos.
+***
 
-- Árboles de decisión
-- KNN
-- Regresión logística
-- Random Forest
-- SVM
-- Redes neuronales
-- XGBoost
+## Idea intuitiva
 
-Todos funcionan de manera distinta.
+```text
+Memorizar ≠ Aprender
+```
 
-Pero todos persiguen exactamente el mismo objetivo:
+Un modelo útil debe generalizar.
 
-Realizar buenas predicciones sobre datos nuevos.
+***
 
-Por eso siempre los evaluamos utilizando Testing Data.
+# Parte 8 — Volviendo al Árbol de Decisión
 
----
+Recordemos el árbol del principio.
 
-# Resumen
+Lo construimos usando Training Data.
 
-Machine Learning consiste en entrenar algoritmos utilizando ejemplos.
+Ahora vamos a probarlo utilizando Testing Data.
 
-Los algoritmos pueden utilizarse para:
+***
 
-- Clasificar
-- Predecir
+## Ejemplo
 
-Entrenan utilizando **Training Data**.
+Alumno:
 
-Se evalúan utilizando **Testing Data**.
+* Le gusta programar
+* Le gusta resolver problemas
 
-Un modelo que memoriza los ejemplos no necesariamente será un buen modelo.
+El árbol predice:
 
-Lo importante no es qué tan bien aprende el entrenamiento, sino qué tan bien funciona con datos que nunca había visto.
+```text
+Le gustará el curso
+```
+
+Y efectivamente:
+
+```text
+Le gustó el curso
+```
+
+Correcto.
+
+***
+
+## Otro ejemplo
+
+Alumno:
+
+* No le gusta programar
+* No le gusta resolver problemas
+
+El árbol predice:
+
+```text
+No le gustará el curso
+```
+
+Pero en la realidad:
+
+```text
+Sí le gustó el curso
+```
+
+Error.
+
+***
+
+## Evaluación
+
+Repetimos este proceso para todas las personas del conjunto de Testing.
+
+Así sabemos qué tan bueno es realmente el árbol.
+
+***
+
+# ¿Importa Qué Algoritmo Usemos?
+
+Actualmente existen muchísimos algoritmos.
+
+* KNN
+* Árboles de decisión
+* Regresión logística
+* Random Forest
+* SVM
+* Gradient Boosting
+* Redes neuronales
+
+Todos son distintos.
+
+Pero todos se evalúan de la misma manera.
+
+***
+
+# Doble BAM
+
+Lo importante no es qué tan sofisticado sea el algoritmo.
+
+Lo importante es:
+
+> Qué tan bien funciona sobre datos que nunca vio.
+
+***
+
+# Resumen Final
+
+Machine Learning consiste en construir modelos utilizando ejemplos.
+
+Los modelos suelen resolver dos grandes tipos de problemas:
+
+* Clasificación
+* Regresión
+
+Los modelos aprenden usando:
+
+* Training Data
+
+Los modelos se evalúan usando:
+
+* Testing Data
+
+Un modelo puede ajustarse perfectamente a los datos de entrenamiento y aun así ser malo prediciendo datos nuevos.
+
+El objetivo final no es memorizar.
+
+El objetivo final es generalizar.
+
+***
+
+## Mensaje de cierre
+
+> Machine Learning no trata de encontrar el modelo más complejo.
+>
+> Trata de encontrar el modelo que mejor predice datos que todavía no conocemos. 🚀
+
+Esta versión mantiene prácticamente la misma secuencia y enseñanza del vídeo de Josh Starmer, sustituyendo únicamente el ejemplo de StatQuest por ejemplos relacionados con estudiantes y cursos.

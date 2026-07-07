@@ -333,6 +333,20 @@ model = LinearRegression()
 model.fit(X, y)
 ```
 
+* Dibujamos los datos de entenamiento como puntos (scatter)
+
+```
+import matplotlib.pyplot as plt
+
+plt.scatter(X, y, color='blue', label='Datos de entrenamiento')
+
+plt.xlabel('X')
+plt.ylabel('y')
+plt.title("Regresion Lineal")
+plt.legend()
+plt.show()
+```
+
 ## Glosario
 
 * Tipos de Problema ML

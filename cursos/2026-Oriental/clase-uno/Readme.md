@@ -314,6 +314,25 @@ print(f"Las predicciones para [[2,4], [3,5], [1,1]] son: {varias_predicciones}")
 Las predicciones para [[2,4], [3,5], [1,1]] son: [ 9.67179487 13.49230769  0.72307692]
 ```
 
+## Vamos a hacer una regresion lineal y un dibujo (matplotlib)
+
+```
+from sklearn.linear_model import LinearRegression
+
+X = [ 
+        [0.7], 
+        [2.5], 
+        [2.7], 
+        [4.3], 
+        [5.5] 
+    ]
+y = [ 2, 4, 6, 8 , 10 ]
+
+model = LinearRegression()
+
+model.fit(X, y)
+```
+
 ## Glosario
 
 * Tipos de Problema ML

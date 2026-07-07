@@ -364,6 +364,24 @@ plt.legend()
 plt.show()
 ```
 
+* Calculo de un error
+
+```
+# Observación que queremos analizar
+x_nuevo = [[0.7]]
+y_real = 2
+
+# Predicción
+y_pred = model.predict(x_nuevo)[0]
+
+# Error absoluto
+error_absoluto = abs(y_real - y_pred)
+
+print(f"Valor real: {y_real}")
+print(f"Predicción: {y_pred:.4f}")
+print(f"Error absoluto: {error_absoluto:.4f}")
+```
+
 ## Glosario
 
 * Tipos de Problema ML
@@ -371,10 +389,14 @@ plt.show()
       * Algoritmos
          * ArbolDeDecision
          * ...
+      * Metricas
+         * Matriz de Confusion
    * Regresion
       * Algoritmos
          * RegresionLineal
          * ...
+      * Metricas
+         * Calculo del Error
 * Datos
    * Datos de Entrenamiento
    * Datos de Prueba/Testing

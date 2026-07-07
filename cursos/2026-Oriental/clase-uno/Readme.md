@@ -301,6 +301,19 @@ La predicción para [2,4] es: 9.67179487179487
 > [!NOTE]
 > En este caso la regresion lineal dio un error que podemos ver, se nota que no estamos el universo de los valores exactos sino de las aproximacions
 
+* Varias predicciones
+```
+varias_predicciones = model.predict([ [2,4], [3,5], [1,1] ])
+
+print(f"Las predicciones para [[2,4], [3,5], [1,1]] son: {varias_predicciones}")
+```
+
+* Esto nos devueelve:
+
+```
+Las predicciones para [[2,4], [3,5], [1,1]] son: [ 9.67179487 13.49230769  0.72307692]
+```
+
 ## Glosario
 
 * Tipos de Problema ML

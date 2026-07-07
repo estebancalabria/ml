@@ -202,6 +202,19 @@ plt.show()
 
 ```python
 from sklearn.linear_model import LinearRegression
+
+from sklearn.linear_model import LinearRegression
+
+X = [ 
+        [1], 
+        [2], 
+        [3], 
+        [4], 
+        [5] 
+    ]
+y = [ 2, 4, 6, 8 , 10 ]
+
+
 ```
 
 
@@ -219,7 +232,11 @@ from sklearn.linear_model import LinearRegression
 * Datos
    * Datos de Entrenamiento
    * Datos de Prueba/Testing
-     
+
+* Tipos de Variables
+   * Features (X) (X mayuscula): Las variables que usamos para hacer predicciones
+   * Labels (y) (y minuscula): Variables que queremos predecir
+   
 * Algorimo de ML -> Modelo (Ej (RegresionLineal -> FormulaMAtematica)
 
 * Conceptos

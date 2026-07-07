@@ -72,6 +72,7 @@ plt.show()
 <img width="938" height="562" alt="image" src="https://github.com/user-attachments/assets/956e7eec-dbf7-4b4e-80f8-582661d8673d" />
 
 * Un ejemplo que hice con copilot
+  
 ```python
 print("=== Sistema de aprobación ===")
 
@@ -87,3 +88,15 @@ if edad > 18:
 else:
     print("Resultado: RECHAZADO")
 ```
+
+* Otros problemas de Clasificacion
+   * Spam / No Spam
+   * Le gusta / No le gusta
+   * Tiene Diabetes/ No tiene Diabetes
+   * Merlot / Cabenet / Syrah
+
+* Un grafico para calcular una Regresion
+
+<img width="1309" height="609" alt="image" src="https://github.com/user-attachments/assets/7235058e-4c4a-495d-b1b3-cc1c82259271" />
+
+     

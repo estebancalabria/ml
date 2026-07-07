@@ -284,6 +284,23 @@ print(f"La predicción para 10 es: {prediccion[0]}")
 # ValueError: X has 1 features, but LinearRegression is expecting 2 features as input.
 ```
 
+* Ahora probamos
+
+```
+prediccion = model.predict([ [2,4] ])
+
+print(f"La predicción para [2,4] es: {prediccion[0]}")
+```
+
+* Nos devuelve
+
+```
+La predicción para [2,4] es: 9.67179487179487
+```
+
+> [!NOTE]
+> En este caso la regresion lineal dio un error que podemos ver, se nota que no estamos el universo de los valores exactos sino de las aproximacions
+
 ## Glosario
 
 * Tipos de Problema ML

@@ -9,8 +9,33 @@
   * Primer Hola Mundo en ML
   * Liberias fundamentales de ML que vamos a usar
 * Visualizacion de datos
-  * MatPlotLib
-* 
+   * MatPlotLib
+   * Lo vamos a utilizar para poder entender los datos
+   * Entender lo que me quiere decir la IA
+* Trabajar con datos Estructurados (Tabulares)
+   * Pandas
+   * Nympy
+   * Es un libreria para trabajar con datos
+   * Analogia con SQL
+      * El pandas es para ML, lo que el SQL es para Base de datos
+      * Un DataFrame es en pandas para ML, lo que una Tabla es en una base de datos
+* Machine Learning
+   * Entrenar Modelos
+   * Sckit-Learn
+   * Entender el pipeline o forma de trabajo de ML en la practica
+   * Primeras experieciencias entrenando modelos de ML
+* Adv Machine Learning
+   * Conocer el catalogo de algoritmos de Machine Learning
+   * Comparar entre distintos algoritmos cual aplicar en cada caso
+   * Metricas y graficos para entender la eficacia de los distintos algoritmos
+   * Probar la efectividad de un modelo
+
+# Presentacion
+
+* Esteban Cesar Calabria
+* Microsoft Certified Trainner
+   * https://www.instagram.com/mct.esteban.calabria/
+   * https://www.linkedin.com/in/esteban-calabria-7a44401a/
 
 # Setup del entono
 
@@ -39,3 +64,9 @@ y = [2, 3, 5, 7, 11]
 plt.plot(x, y)
 plt.show()
 ```
+
+# Fundamentos de Machine Learning
+
+<img width="938" height="562" alt="image" src="https://github.com/user-attachments/assets/956e7eec-dbf7-4b4e-80f8-582661d8673d" />
+
+

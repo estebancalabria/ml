@@ -273,6 +273,17 @@ model.fit(X, y)
 
 ```
 
+* Forzamos un error
+
+```python
+# Forzar un error a propisto y de paso leer el error de la consola para ver que pasa
+prediccion = model.predict([[10]])
+
+print(f"La predicción para 10 es: {prediccion[0]}")
+
+# ValueError: X has 1 features, but LinearRegression is expecting 2 features as input.
+```
+
 ## Glosario
 
 * Tipos de Problema ML

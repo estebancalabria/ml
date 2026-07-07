@@ -191,3 +191,38 @@ plt.show()
  
 > [!NOTE]
 > A pesar de que la formula compleja predecia perfectamente los datos de entrenamiento, al momento de aplicarla con datos reales la formula lineal era mas generalizable, me daba mejores predicciones a la larga
+
+* Overfitting : Cuando el modelo aprende bien los datos reales pero no generaliza bien con datos nuevos.
+
+## Vamos a poner en prueba nuestros conocimientos
+
+> https://kahoot.it/?pin=5875495&refer_method=link
+
+## Hola Mundo ML
+
+```python
+from sklearn.linear_model import LinearRegression
+```
+
+
+## Glosario
+
+* Tipos de Problema ML
+   * Clasificacion
+      * Algoritmos
+         * ArbolDeDecision
+         * ...
+   * Regresion
+      * Algoritmos
+         * RegresionLineal
+         * ...
+* Datos
+   * Datos de Entrenamiento
+   * Datos de Prueba/Testing
+     
+* Algorimo de ML -> Modelo (Ej (RegresionLineal -> FormulaMAtematica)
+
+* Conceptos
+   * Error : LA diferencia entre la prediccion del modelo y lo que tendria que dar
+   * Overfittin : Cuando se memorizan los datos de entreamineto pero no generaliza bien
+  

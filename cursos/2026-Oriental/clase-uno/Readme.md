@@ -243,6 +243,18 @@ model.fit(X, y)
 
 * Lo probamos
 
+```
+prediccion = model.predict([[10]])
+
+print(f"La predicción para 10 es: {prediccion[0]}")
+```
+
+* Esto me devuelve
+
+```
+La predicción para 10 es: 18.915712799167526
+```
+
 ## Glosario
 
 * Tipos de Problema ML

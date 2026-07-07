@@ -203,8 +203,6 @@ plt.show()
 ```python
 from sklearn.linear_model import LinearRegression
 
-from sklearn.linear_model import LinearRegression
-
 X = [ 
         [1], 
         [2], 
@@ -214,9 +212,17 @@ X = [
     ]
 y = [ 2, 4, 6, 8 , 10 ]
 
+model = LinearRegression()
 
+model.fit(X, y)
 ```
 
+* Luego usamos el modelo para hacer una prediccion
+
+```
+prediccion = model.predict([[10]])
+print(f"La predicción para 10 es: {prediccion[0]}")
+```
 
 ## Glosario
 

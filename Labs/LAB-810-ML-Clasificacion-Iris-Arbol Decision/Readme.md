@@ -1,16 +1,3 @@
-Excelente. Para mantener exactamente el mismo estilo pedagógico que el LAB-0800 de KNN, el siguiente laboratorio debería aprovechar las fortalezas visuales del Árbol de Decisión:
-
-1. Scatter de los datos (igual que KNN).
-2. Entrenar el árbol.
-3. Dibujar el árbol (la gran ventaja didáctica).
-4. Frontera de decisión.
-5. Matriz de confusión.
-6. Importancia de variables.
-
-Eso permite explicar perfectamente cómo el modelo "pregunta cosas" sobre largo y ancho de pétalo para tomar decisiones.
-
-***
-
 # LAB-0810 – ML: Iris con Árbol de Decisión
 
 ## Objetivo

@@ -224,6 +224,25 @@ prediccion = model.predict([[10]])
 print(f"La predicción para 10 es: {prediccion[0]}")
 ```
 
+## Otro ejemplo con valores mas realistas
+
+```python
+X = [ 
+        [0.8], 
+        [2.2], 
+        [2.9], 
+        [4.1], 
+        [5.2] 
+    ]
+y = [ 2, 4, 6, 8 , 10 ]
+
+model = LinearRegression()
+
+model.fit(X, y)
+```
+
+* Lo probamos
+
 ## Glosario
 
 * Tipos de Problema ML

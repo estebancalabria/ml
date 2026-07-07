@@ -255,6 +255,24 @@ print(f"La predicción para 10 es: {prediccion[0]}")
 La predicción para 10 es: 18.915712799167526
 ```
 
+## Ejemplo con mas de dos features
+
+```python
+X = [ 
+        [1, 1], 
+        [2, 3], 
+        [3, 3], 
+        [4, 2], 
+        [5, 1] 
+    ]
+y = [ 1, 6, 9, 8 , 5 ]
+
+model = LinearRegression()
+
+model.fit(X, y)
+
+```
+
 ## Glosario
 
 * Tipos de Problema ML

@@ -1,4 +1,4 @@
-# Laboratorio – 0310 - Gráfico de líneas con datos reales (Rankings FIFA)
+# Laboratorio – Gráfico de líneas con datos reales (Rankings FIFA)
 
 ## Objetivo
 
@@ -69,6 +69,8 @@ Corré el código y mirá la tabla que aparece. ¿Cuántas columnas tiene ademá
 
 ### Código
 
+Con seaborn:
+
 ```python
 plt.figure(figsize=(16, 6))
 
@@ -80,11 +82,28 @@ plt.ylabel("Puesto en el ranking (más bajo es mejor)")
 plt.show()
 ```
 
+Sin seaborn:
+
+```python
+plt.figure(figsize=(16, 6))
+
+for columna in fifa_data.columns:
+    plt.plot(fifa_data.index, fifa_data[columna], label=columna)
+
+plt.title("Evolución del ranking FIFA")
+plt.xlabel("Fecha")
+plt.ylabel("Puesto en el ranking (más bajo es mejor)")
+plt.legend()
+plt.show()
+```
+
 ### Explicación línea por línea
 
 - `plt.figure(figsize=(16, 6))`: crea el "lienzo" del gráfico, indicando su ancho y alto en pulgadas (16 de ancho, 6 de alto). Esto se hace antes de graficar, para que el gráfico tenga ese tamaño.
-- `sns.lineplot(data=fifa_data)`: dibuja una línea por cada columna de la tabla (`ARG`, `BRA`, `ESP`, `FRA`, `GER`, `ITA`), usando el índice (la fecha) como eje X. Seaborn detecta solo las columnas y les asigna un color distinto a cada una, además de agregar automáticamente una referencia (leyenda).
-- `plt.title(...)`, `plt.xlabel(...)`, `plt.ylabel(...)`: igual que en matplotlib puro, ponen título y nombres de los ejes.
+- `sns.lineplot(data=fifa_data)`: dibuja una línea por cada columna de la tabla (`ARG`, `BRA`, `ESP`, `FRA`, `GER`, `ITA`), usando el índice (la fecha) como eje X. Seaborn detecta solas las columnas y les asigna un color distinto a cada una, además de agregar automáticamente una referencia (leyenda).
+- `for columna in fifa_data.columns:` / `plt.plot(fifa_data.index, fifa_data[columna], label=columna)`: es la versión sin seaborn. Hay que recorrer las columnas a mano y dibujar una línea por cada una, indicando el `label` para que aparezca en la leyenda.
+- `plt.legend()`: en la versión sin seaborn hay que agregarla a mano; con seaborn aparece sola.
+- `plt.title(...)`, `plt.xlabel(...)`, `plt.ylabel(...)`: en ambas versiones ponen título y nombres de los ejes.
 - `plt.show()`: muestra el gráfico en pantalla.
 
 ### Consigna

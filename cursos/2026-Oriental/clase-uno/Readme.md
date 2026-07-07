@@ -67,6 +67,23 @@ plt.show()
 
 # Fundamentos de Machine Learning
 
+* Un arbol de decision utilizado para tareas de Clasificacion
+  
 <img width="938" height="562" alt="image" src="https://github.com/user-attachments/assets/956e7eec-dbf7-4b4e-80f8-582661d8673d" />
 
+* Un ejemplo que hice con copilot
+```python
+print("=== Sistema de aprobación ===")
 
+edad = int(input("Ingrese su edad: "))
+
+if edad > 18:
+    trabajo = input("¿Tiene trabajo? (si/no): ").lower()
+
+    if trabajo == "si":
+        print("Resultado: APROBADO")
+    else:
+        print("Resultado: RECHAZADO")
+else:
+    print("Resultado: RECHAZADO")
+```

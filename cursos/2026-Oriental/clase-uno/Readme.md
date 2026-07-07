@@ -347,6 +347,23 @@ plt.legend()
 plt.show()
 ```
 
+* Ahora graficamos la prediccion con los valores originales
+
+```
+import matplotlib.pyplot as plt
+
+y_pred = model.predict(X)
+
+plt.scatter(X, y, color='blue', label='Datos de entrenamiento')
+plt.plot(X, y_pred, color='red', label='Predicción del modelo')
+
+plt.xlabel('Feature X')
+plt.ylabel('Label y')
+plt.title("Regresion Lineal")
+plt.legend()
+plt.show()
+```
+
 ## Glosario
 
 * Tipos de Problema ML

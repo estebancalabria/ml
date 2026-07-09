@@ -287,6 +287,31 @@ plt.scatter(horas_estudio, notas_examen)
 plt.show()
 ```
 
+* Datos Originales
+```
+horas_estudio = [1, 2, 3, 4, 5, 6, 7, 8, 9, 9]
+notas_examen = [54, 45, 55, 70, 70, 75, 65, 80, 85, 95]
+
+plt.scatter(horas_estudio, notas_examen)
+plt.show()
+```
+
+```
+from sklearn.linear_model import LinearRegression
+
+horas_estudio = [1, 2, 3, 4, 5, 6, 7, 8, 9, 9]
+notas_examen = [54, 45, 55, 70, 70, 75, 65, 80, 85, 95]
+
+# EN SKLEARN los features los pasamos de esta manera, como un array de arrays, por eso hacemos la transformación de X
+#X = [ [1], [2], [3], [4], [5], [6], [7], [8], [9], [9] ]
+
+X = [[x] for x in horas_estudio]
+print(X)
+
+
+#plt.scatter(horas_estudio, notas_examen)
+#plt.show()
+```
 
 ---
 

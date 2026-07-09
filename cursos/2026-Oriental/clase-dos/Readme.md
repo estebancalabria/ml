@@ -306,8 +306,14 @@ notas_examen = [54, 45, 55, 70, 70, 75, 65, 80, 85, 95]
 #X = [ [1], [2], [3], [4], [5], [6], [7], [8], [9], [9] ]
 
 X = [[x] for x in horas_estudio]
-print(X)
+y = notas_examen
 
+model = LinearRegression()
+model.fit(X, y)
+
+y_pred = model.predict(X)
+
+print(y_pred )
 
 #plt.scatter(horas_estudio, notas_examen)
 #plt.show()

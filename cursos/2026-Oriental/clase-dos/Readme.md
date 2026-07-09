@@ -93,6 +93,26 @@ plt.legend(["y = x^2"])
 plt.show()
 ```
 
+## Dos lineas
+
+```
+import matplotlib.pyplot as plt
+
+X = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+y = [2, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+y_linea = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+plt.title("Gráfico de ejemplo")
+plt.plot(X, y)
+plt.plot(X, y_linea)
+plt.xlabel("Eje X")
+plt.ylabel("Eje Y")
+
+plt.legend(["y = x^2", "y = x"])
+
+plt.show()
+```
+
 ### Resumen de metodos
 
 * Para texto en el grafico

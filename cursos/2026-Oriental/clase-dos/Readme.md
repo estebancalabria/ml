@@ -63,6 +63,13 @@
 
 # Visualizacion de Datos con MatPlotLib
 
+* Los graficos para ML son
+  * plot (linea)
+  * scatter (puntitos)
+  * histograma (analizar la distribucion)
+  * boxplot
+  * heatmap (matriz de confusion y correlacion entre variables)
+
 ## Ejemplo Sencillo
 
 ```
@@ -231,6 +238,9 @@ plt.colorbar()
 plt.show()
 ```
 
+<img width="433" height="308" alt="image" src="https://github.com/user-attachments/assets/bac888b9-319a-4c29-9b8e-d34148c60fdd" />
+
+
 
 ### Resumen de metodos
 
@@ -238,24 +248,47 @@ plt.show()
  * title
  * xlabel
  * ylabel
+ * xticks
+ * yticks
  * legend
 * Graficos concretos
   * plot : graficos de Lineas
   * hist : histograma
   * boxplot : valor min, max, mediana
   * scatter
+  * imshow
  * Finalmente
   * Show
+
+---
 
 # Kahoot 1
 
 * https://kahoot.it/?pin=2887222&refer_method=link
+
+---
 
 # Proceso de ML
 
 * Analizar la muestra de datos
   * Hacer un histograama para cada variable
   * Hacer un boxplot para cada variable (puede ser en el mismo grafico)
+
+---
+
+# Integrando Regresion Lineal con MatPlotLib
+
+* Datos Originales
+```
+horas_estudio = [1, 2, 3, 4, 5, 6, 7, 8, 9, 9]
+notas_examen = [54, 45, 55, 70, 70, 75, 65, 80, 85, 95]
+
+plt.scatter(horas_estudio, notas_examen)
+plt.show()
+```
+
+
+---
 
 # Clasificacion
 

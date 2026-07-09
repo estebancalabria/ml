@@ -113,6 +113,9 @@ plt.legend(["y = x^2", "y = x"])
 plt.show()
 ```
 
+<img width="425" height="341" alt="image" src="https://github.com/user-attachments/assets/06a9cf47-a483-4cc3-b3d1-af184e6c3061" />
+
+
 ## Histograma : Ejemplo Edades
 
 ```
@@ -123,6 +126,9 @@ plt.title("Histograma de edades")
 
 plt.show()
 ```
+
+<img width="407" height="322" alt="image" src="https://github.com/user-attachments/assets/e772591e-391a-4572-9838-030f00fc21d3" />
+
 
 ## Histograma : Ejemplo dados
 
@@ -139,6 +145,23 @@ plt.hist(suma_azar, bins=11, color='green', edgecolor='black')
 plt.title("Histograma de la suma de dos dados")
 ```
 
+<img width="413" height="325" alt="image" src="https://github.com/user-attachments/assets/eaa0c5a5-0190-45f3-ae1f-595522ec8d33" />
+
+## BoxPlot
+
+```
+
+curso_a = [2,  5,6,7,5,6,7, 10]
+curso_b = [ 6, 7, 8, 9, 6, 7, 8, 9 ,6 ,7 ,8, 9]
+
+plt.boxplot([curso_a, curso_b], labels=["Curso A", "Curso B"])
+
+plt.show()
+```
+<img width="400" height="301" alt="image" src="https://github.com/user-attachments/assets/34b0be57-0609-408f-a250-73affb40f1a2" />
+
+
+
 ### Resumen de metodos
 
 * Para texto en el grafico
@@ -150,6 +173,12 @@ plt.title("Histograma de la suma de dos dados")
   * plot : graficos de Lineas
  * Finalmente
   * Show
+
+# Proceso de ML
+
+* Analizar la muestra de datos
+  * Hacer un histograama para cada variable
+
 # Clasificacion
 
 # Metricas Clasificacion

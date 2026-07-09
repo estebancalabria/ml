@@ -273,6 +273,9 @@ plt.show()
 * Analizar la muestra de datos
   * Hacer un histograama para cada variable
   * Hacer un boxplot para cada variable (puede ser en el mismo grafico)
+  * Tomar variables y probar su relacion
+      * Regresion Lineal
+      * Grafico de Scatter y plot
 
 ---
 
@@ -313,10 +316,17 @@ model.fit(X, y)
 
 y_pred = model.predict(X)
 
-print(y_pred )
+plt.scatter(horas_estudio, notas_examen)
+plt.plot(horas_estudio, y_pred, color='red')
+plt.show()
+```
 
-#plt.scatter(horas_estudio, notas_examen)
-#plt.show()
+* Poder imprimit la formula
+
+```
+print("Coeficiente de regresión (pendiente):", model.coef_[0])
+print("Intercepto:", model.intercept_)
+print("Formula: y =", model.coef_[0], "* x +", model.intercept_)
 ```
 
 ---

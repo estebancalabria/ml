@@ -341,6 +341,11 @@ print("Formula: y =", model.coef_[0], "* x +", model.intercept_)
 
 * Predecir si estudiante aprueba o no dependiendo de sus horas de estudio y asistencias a clase
 
+* vamos a usar Regresion Logistica (Que de clasificacion)
+
+<img width="1270" height="558" alt="image" src="https://github.com/user-attachments/assets/0b30c4dd-d0ce-4617-9557-b2fc2cd1b5d9" />
+
+
 ```python
 from sklearn.linear_model import LogisticRegression
 
@@ -404,6 +409,37 @@ else:
 
 # Metricas Clasificacion (Matriz de Confusion)
 
-# Comparar Modelos
+* En los modelos de regresion el error era la diferencia entre lo que predice el modelo y la realidad
+* Eso no aplica en los modelos de clasificacion, aca el modelo acierta o el modelo "copetea"
 
-# Test/Train
+* Podemos entrenar un dataset con varios modelos
+<img width="1701" height="646" alt="image" src="https://github.com/user-attachments/assets/8d5074f0-bc7a-4753-b084-8113eeff6dfe" />
+
+# Comparar Modelos (Test/Train)
+
+* Podemos hacer la clasificacion utilizando tres modelos
+   * LogisticRegression
+   * Gradient Boosted Tress (Arboles de decision)
+   * KNN
+   * ...
+
+* Separar los datos en entrenamiento y validacion
+
+<img width="1701" height="646" alt="image" src="https://github.com/user-attachments/assets/6f5678a5-5c6a-4883-b441-296e22e387ae" />
+
+* Voy a dividir el dataset en dos
+   * Datos de Entrenamiento : Que los uso para entrenar los tres modelos
+   * Datos de Prueba : Que los uso con los tres modelos para ver con cual me quedo
+
+## Matriz de confusion
+
+<img width="1139" height="609" alt="image" src="https://github.com/user-attachments/assets/4e3ea1d3-9fca-42e3-9f77-c73a5a63ef06" />
+
+## Comparamos el Random Forrest con el KNN (Ejemplo inventado)
+
+<img width="1853" height="646" alt="image" src="https://github.com/user-attachments/assets/d20bcf20-dc41-401c-b251-ba44cac3eefc" />
+
+* Claramente Gana el Random Forrest
+
+
+

@@ -113,6 +113,17 @@ plt.legend(["y = x^2", "y = x"])
 plt.show()
 ```
 
+## Histograma : Ejemplo 1
+
+```
+edades = [20, 22, 25, 30, 35, 40, 45, 50, 55, 60, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 21]
+
+plt.hist(edades, bins=5, color='blue', edgecolor='black')
+plt.title("Histograma de edades")
+
+plt.show()
+```
+
 ### Resumen de metodos
 
 * Para texto en el grafico

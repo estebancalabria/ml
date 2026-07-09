@@ -199,6 +199,7 @@ La dispersión del Curso A es mucho mayor: el boxplot tiene un rango y una caja 
 La mediana del Curso B es superior a la del Curso A: además de ser más homogéneo, el Curso B presenta un rendimiento típico más alto (≈ 7,5 frente a ≈ 6), sugiriendo mejores resultados generales del grupo.
 ```
 
+
 ### Resumen de metodos
 
 * Para texto en el grafico
@@ -210,6 +211,10 @@ La mediana del Curso B es superior a la del Curso A: además de ser más homogé
   * plot : graficos de Lineas
  * Finalmente
   * Show
+
+# Kahoot 1
+
+* https://kahoot.it/?pin=2887222&refer_method=link
 
 # Proceso de ML
 

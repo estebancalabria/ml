@@ -160,7 +160,44 @@ plt.show()
 ```
 <img width="400" height="301" alt="image" src="https://github.com/user-attachments/assets/34b0be57-0609-408f-a250-73affb40f1a2" />
 
+## Varios graficos y correlacion entre graficos
 
+```
+curso_a = [2,  5,6,7,5,6,7, 10]
+curso_b = [ 6, 7, 8, 9, 6, 7, 8, 9 ,6 ,7 ,8, 9]
+
+fig, ax = plt.subplots(1, 3, figsize=(12, 5))
+
+ax[0].boxplot([curso_a, curso_b], labels=["Curso A", "Curso B"])
+
+ax[1].hist(curso_a, bins=10, color='blue', edgecolor='black')
+ax[1].set_title("Histograma Curso A")
+
+ax[2].hist(curso_b, bins=10, color='green', edgecolor='black')
+ax[2].set_title("Histograma Curso B")
+
+plt.show()  
+```
+
+<img width="616" height="283" alt="image" src="https://github.com/user-attachments/assets/682b9703-ba2e-4d55-99b1-7af6cf2825a8" />
+
+* Pedirle a la IA que saque conclusiones
+
+```
+Saca conclusiones de la correlacion entre datos con estos diagramas
+```
+
+* Ayuda a entender los datos
+
+```
+El Curso B muestra un rendimiento más consistente y homogéneo: todas las notas se concentran entre 6 y 9, mientras que en el Curso A hay alumnos desde 2 hasta 10.
+
+
+La dispersión del Curso A es mucho mayor: el boxplot tiene un rango y una caja más amplios, lo que indica diferencias significativas entre los estudiantes y una mayor variabilidad en el rendimiento.
+
+
+La mediana del Curso B es superior a la del Curso A: además de ser más homogéneo, el Curso B presenta un rendimiento típico más alto (≈ 7,5 frente a ≈ 6), sugiriendo mejores resultados generales del grupo.
+```
 
 ### Resumen de metodos
 
@@ -178,6 +215,7 @@ plt.show()
 
 * Analizar la muestra de datos
   * Hacer un histograama para cada variable
+  * Hacer un boxplot para cada variable (puede ser en el mismo grafico)
 
 # Clasificacion
 

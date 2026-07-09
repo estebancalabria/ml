@@ -362,6 +362,39 @@ X = [
 y = [0, 0, 0, 1, 1, 1, 0, 1, 0, 1]
 ```
 
+* El ejemplo concreto
+
+```
+from sklearn.linear_model import LogisticRegression
+
+#Horas estudio, asistencia a clase
+X = [
+    [1 ,10],
+    [2 ,6],
+    [2 ,1],
+    [3 ,9],
+    [3 ,10],
+    [4 ,8],
+    [5 ,7],
+    [5 ,10],
+    [3 ,6],
+    [9 ,5]
+]
+
+# 1, aprueba, 2 no aprueba
+y = [0, 0, 0, 1, 1, 1, 0, 1, 0, 1]
+
+model = LogisticRegression()
+model.fit(X, y)
+
+nuevo_estudiante = [[5, 10]]
+
+prediccion = model.predict(nuevo_estudiante)
+```
+
+> [!NOTE]
+> Cambien los valores de el nuesvo estudiante de hoyras de estudio y asistencia para ver como varia la prediccion
+
 # Metricas Clasificacion (Matriz de Confusion)
 
 # Comparar Modelos

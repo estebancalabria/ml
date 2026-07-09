@@ -209,6 +209,29 @@ plt.scatter(horas_estudio, notas_examen)
 plt.show()
 ```
 
+<img width="402" height="307" alt="image" src="https://github.com/user-attachments/assets/7f06ffb6-6aa7-43b0-bb16-34591c6e633d" />
+
+## Heatmap
+
+```
+import numpy as np
+
+horas_estudio = [1, 2, 2, 4, 5, 6, 7, 8, 9, 9]
+horas_sueno = [6, 7, 8, 9, 6, 7, 8, 9 ,6 ,7]
+notas_examen = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95]
+
+#Simulando el resultado de un ML
+correlacion = np.corrcoef([horas_estudio, horas_sueno, notas_examen]);
+
+plt.imshow(correlacion, cmap='coolwarm', interpolation='nearest')
+plt.xticks([0, 1, 2], ['Horas de estudio', 'Horas de sueño', 'Notas examen'])
+plt.yticks([0, 1, 2], ['Horas de estudio', 'Horas de sueño', 'Notas examen'])
+plt.colorbar()
+
+plt.show()
+```
+
+
 ### Resumen de metodos
 
 * Para texto en el grafico

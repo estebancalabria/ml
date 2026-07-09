@@ -277,6 +277,22 @@ plt.show()
       * Regresion Lineal
       * Grafico de Scatter y plot
 
+* ....
+
+* Entrenar Modelos
+  * Generamente se toma un modelo baseline
+     * Para Regresion -> Baseline la regresion lineal
+  * Comparar modelos
+     * Descartar modelos
+     * Combinarlos
+     * Modificar el dataser original
+  * Calcular muchas metricas
+     * Error
+     * Matriz de Confusion
+
+
+> [!NOTE]
+> Este proceso es tentativo lo vamos armando en la cursa, faltan varias cosas
 ---
 
 # Integrando Regresion Lineal con MatPlotLib
@@ -435,11 +451,26 @@ else:
 
 <img width="1139" height="609" alt="image" src="https://github.com/user-attachments/assets/4e3ea1d3-9fca-42e3-9f77-c73a5a63ef06" />
 
-## Comparamos el Random Forrest con el KNN (Ejemplo inventado)
+* Veamos un ejemplo
+
+### Comparamos el Random Forrest con el KNN (Ejemplo inventado)
 
 <img width="1853" height="646" alt="image" src="https://github.com/user-attachments/assets/d20bcf20-dc41-401c-b251-ba44cac3eefc" />
 
 * Claramente Gana el Random Forrest
 
+
+### Comparamos el Random Forrest con el Logistic Regression
+
+<img width="1853" height="646" alt="image" src="https://github.com/user-attachments/assets/492bb1bc-45ec-4591-b045-c6fcabf3c261" />
+
+* Aca no hay un claro gandor. Tengo que seguir explorando
+  * Ver los objetivos del negocio << Primero siempre
+  * Hacer un division distinta de entre entrenamiento/Pruebas
+    * (Cross Validation)
+  * Estudiar otras meticas adicionales
+    * Sesitivity
+    * Specificity
+    * ROC / AUC
 
 

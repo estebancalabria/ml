@@ -390,6 +390,13 @@ model.fit(X, y)
 nuevo_estudiante = [[5, 10]]
 
 prediccion = model.predict(nuevo_estudiante)
+
+print(prediccion)
+
+if (prediccion[0] == 1):
+    print("El nuevo estudiante aprueba")
+else:
+    print("El nuevo estudiante no aprueba")
 ```
 
 > [!NOTE]

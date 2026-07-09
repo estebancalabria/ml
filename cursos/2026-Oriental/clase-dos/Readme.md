@@ -41,7 +41,25 @@
 * Sckit-learn
   * https://scikit-learn.org/stable/
 
-# Vision de posibilidades como una empresa puede trabajar con ML
+---
+
+# Entornos de ML
+
+* Entornos On-Premise (in Company) especializados
+ * Acceso remoto a notebboks
+* Google Colab
+ * https://colab.google/
+* Proveedores Cloud
+   * Azure
+     * ML workspace
+     * Studio
+       * https://ml.azure.com/
+   * AWS
+     * ???
+* Entornos Educativos
+   * https://www.kaggle.com/
+
+---
 
 # Visualizacion de Datos con MatPlotLib
 

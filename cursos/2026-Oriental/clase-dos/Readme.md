@@ -331,13 +331,36 @@ print("Formula: y =", model.coef_[0], "* x +", model.intercept_)
 
 ---
 
-# Segundo Kahoot
+# Segundo Kahoot (Break)
 
 * https://kahoot.it/?pin=1125024&refer_method=link
 
 ---
 
 # Clasificacion
+
+* Predecir si estudiante aprueba o no dependiendo de sus horas de estudio y asistencias a clase
+
+```python
+from sklearn.linear_model import LogisticRegression
+
+#Horas estudio, asistencia a clase
+X = [
+    [1 ,10],
+    [2 ,6],
+    [2 ,1],
+    [3 ,9],
+    [3 ,10],
+    [4 ,8],
+    [5 ,7],
+    [5 ,10],
+    [3 ,6],
+    [9 ,5]
+]
+
+# 1, aprueba, 2 no aprueba
+y = [0, 0, 0, 1, 1, 1, 0, 1, 0, 1]
+```
 
 # Metricas Clasificacion (Matriz de Confusion)
 

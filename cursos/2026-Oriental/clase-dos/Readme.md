@@ -199,6 +199,15 @@ La dispersión del Curso A es mucho mayor: el boxplot tiene un rango y una caja 
 La mediana del Curso B es superior a la del Curso A: además de ser más homogéneo, el Curso B presenta un rendimiento típico más alto (≈ 7,5 frente a ≈ 6), sugiriendo mejores resultados generales del grupo.
 ```
 
+## Grafico de Scatter (dispersion)
+
+```
+horas_estudio = [1, 2, 2, 4, 5, 6, 7, 8, 9, 9]
+notas_examen = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95]
+
+plt.scatter(horas_estudio, notas_examen)
+plt.show()
+```
 
 ### Resumen de metodos
 
@@ -209,6 +218,9 @@ La mediana del Curso B es superior a la del Curso A: además de ser más homogé
  * legend
 * Graficos concretos
   * plot : graficos de Lineas
+  * hist : histograma
+  * boxplot : valor min, max, mediana
+  * scatter
  * Finalmente
   * Show
 

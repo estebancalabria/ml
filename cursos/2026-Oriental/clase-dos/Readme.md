@@ -331,9 +331,15 @@ print("Formula: y =", model.coef_[0], "* x +", model.intercept_)
 
 ---
 
+# Segundo Kahoot
+
+* https://kahoot.it/?pin=1125024&refer_method=link
+
+---
+
 # Clasificacion
 
-# Metricas Clasificacion
+# Metricas Clasificacion (Matriz de Confusion)
 
 # Comparar Modelos
 

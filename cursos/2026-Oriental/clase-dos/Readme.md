@@ -2,7 +2,7 @@
 
 # Repaso
 
-* Setup del Entorno
+* Setup del Entorno 
   * Python (Hay otros lenguajes como R)
     * Librerias
       * numpy

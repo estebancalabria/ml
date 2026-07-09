@@ -225,7 +225,13 @@ Comentar que Kaggle es una excelente fuente de datasets.
 
 ------------------------------------------------------------------------
 
-# 12. Cierre (10 min)
+# 12. Machine Learning con Agente Analista
+
+* Mostramos como usar la IA para programar ML con el agente analista
+
+------------------------------------------------------------------------
+
+# 14. Cierre (10 min)
 
 Repasar:
 

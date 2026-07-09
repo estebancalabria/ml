@@ -113,7 +113,7 @@ plt.legend(["y = x^2", "y = x"])
 plt.show()
 ```
 
-## Histograma : Ejemplo 1
+## Histograma : Ejemplo Edades
 
 ```
 edades = [20, 22, 25, 30, 35, 40, 45, 50, 55, 60, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 21]
@@ -122,6 +122,21 @@ plt.hist(edades, bins=5, color='blue', edgecolor='black')
 plt.title("Histograma de edades")
 
 plt.show()
+```
+
+## Histograma : Ejemplo dados
+
+```python
+import random
+
+#Generar un numero al azar entre 1 y 6
+numero_azar = random.randint(1, 6)
+
+#Generar un array de 1000 elementos donde cada elemento es la suma de dos valores al azar entre 1 y 6
+suma_azar = [random.randint(1, 6) + random.randint(1, 6) for _ in range(1000)]
+
+plt.hist(suma_azar, bins=11, color='green', edgecolor='black')
+plt.title("Histograma de la suma de dos dados")
 ```
 
 ### Resumen de metodos

@@ -399,7 +399,27 @@ plt.tight_layout()
 plt.show()
 ```
 
+* Grafico Generado
+
+<img width="595" height="482" alt="image" src="https://github.com/user-attachments/assets/02f1d982-94c9-4ad6-9be6-800e18fba789" />
+
 ## Reduccion de la dimensionalidad
+
+* Cuando dos features (variables que uso para predecir) son colineales, a veces no esta tan bueno
+  * Baja la explicabilidad, el modelo se confunde y marea con las dos variables
+  * Hay modelos que no funcionan de manera optima si hay colinealidad
+    * Los modelos basados en arboles -> Zafan, puteden funcionar, no se penalizan tanto.
+      * Random Forrest, Decission Tree, XGBoost
+    * Lineales y basado en distancia -> Van para atras, no se llevan muy bien con la colinealidad
+      * KNN, SVN, .... 
+
+* Si usamos como features dos variables colineales
+  * Algunos modelos no andan tan bien
+  * Perdemos poder de  explicacion (ver importancia de variables)
+  * Tardan mas...
+ 
+* La reduccion de la dimensionalidad consiste en elegir que columnas realmente son importantes/relevantes a la hora entrenar el modelo
+* Muchas veces no conviene usar todas las columnas
 
 ---
 
@@ -469,7 +489,6 @@ print(f"MAE: {mae:.4f}")
 print(f"MSE: {mse:.4f}")
 print(f"RMSE: {rmse:.4f}")
 print(f"R²: {r2:.4f}")
-
 
 ```
 

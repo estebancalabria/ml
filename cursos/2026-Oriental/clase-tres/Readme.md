@@ -492,6 +492,8 @@ print(f"R²: {r2:.4f}")
 
 ```
 
+## Trabajo con arc
+
 ---
 
 # Clasificacion

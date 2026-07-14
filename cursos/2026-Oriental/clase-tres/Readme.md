@@ -492,8 +492,9 @@ print(f"R²: {r2:.4f}")
 
 ```
 
-## Trabajo con archivos locales
+## Trabajo con archivos csv
 
+* Lo levanto localmente
 ```python
 import pandas as pd
 
@@ -504,7 +505,35 @@ df.head()
 
 * Hacemos lo mismo que antes
 
-```
+```python
+matriz_correlacion = df.corr()
+
+plt.figure(figsize=(6,5))
+
+plt.imshow(matriz_correlacion,
+           cmap="coolwarm",
+           vmin=-1,
+           vmax=1)
+
+plt.colorbar(label="Correlación")
+
+plt.xticks(range(len(matriz_correlacion.columns)),
+           matriz_correlacion.columns,
+           rotation=45)
+
+plt.yticks(range(len(matriz_correlacion.columns)),
+           matriz_correlacion.columns)
+
+for i in range(len(matriz_correlacion)):
+    for j in range(len(matriz_correlacion)):
+        plt.text(j, i,
+                 f"{matriz_correlacion.iloc[i, j]:.2f}",
+                 ha="center",
+                 va="center")
+
+plt.title("Heatmap de Correlaciones")
+plt.tight_layout()
+plt.show()
 ```
 
 ---

@@ -359,6 +359,46 @@ matriz_correlacion = df.corr()
 print(matriz_correlacion)
 ```
 
+* Salida
+
+```
+Horas de Estudio  Asistencia     Notas
+Horas de Estudio          1.000000   -0.052330  0.987984
+Asistencia               -0.052330    1.000000 -0.044647
+Notas                     0.987984   -0.044647  1.000000
+```
+
+* Graficando el heatmap
+
+```
+plt.figure(figsize=(6,5))
+
+plt.imshow(matriz_correlacion,
+           cmap="coolwarm",
+           vmin=-1,
+           vmax=1)
+
+plt.colorbar(label="Correlación")
+
+plt.xticks(range(len(matriz_correlacion.columns)),
+           matriz_correlacion.columns,
+           rotation=45)
+
+plt.yticks(range(len(matriz_correlacion.columns)),
+           matriz_correlacion.columns)
+
+for i in range(len(matriz_correlacion)):
+    for j in range(len(matriz_correlacion)):
+        plt.text(j, i,
+                 f"{matriz_correlacion.iloc[i, j]:.2f}",
+                 ha="center",
+                 va="center")
+
+plt.title("Heatmap de Correlaciones")
+plt.tight_layout()
+plt.show()
+```
+
 ## Reduccion de la dimensionalidad
 
 ---

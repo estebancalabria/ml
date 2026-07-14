@@ -137,7 +137,25 @@ plt.show()
 
 ## Metricas
 
-* Tres metricas de error
+* Cuatro metricas de error
+ * MAE : Mean Absolute Error : El prompedio de el valor absoluto de los errores
+ * MSE : Mean Square Error : A los errores los eleva al cuadrado y calcula el promedio (para castigar los errores mas grandes)
+ * RMSE : LA raiz cuadrada del MSE (para mostrarlo en una magnitud comparable a los datos de entrada)
+ * R2 : Mide el error en una magnitud que va entre 0 y 1
+
+```python
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+mae_a = mean_absolute_error(y, y_pred)
+mse_a = mean_squared_error(y, y_pred)
+rmse_a = np.sqrt(mse_a)
+r2_a = r2_score(y, y_pred)
+
+print(f"MAE: {mae_a:.4f}")
+print(f"MSE: {mse_a:.4f}")
+print(f"RMSE: {rmse_a:.4f}")
+print(f"R2: {r2_a:.4f}")
+```
 
 ## Colinealidad
 

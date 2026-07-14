@@ -42,6 +42,12 @@
 
 * Vamos a hacer un ejemplo de regresion
 
+* En este caso vamos numpy, se puede instalar si no viene (aunque siempre viene instalado)
+
+```python
+!pip install numpy
+```
+
 * Defino el Dataset
 ```
 import numpy as np
@@ -49,6 +55,9 @@ import numpy as np
 horas_estudio_a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9,10])
 notas_a = np.array([1.5, 2.3, 2.5, 3.2, 5.5, 6, 7.3, 8.1, 8.5, 9.5])
 ```
+
+> [!NOTE]
+> En este caso use Numpy para que se manejen los arrays mas eficientemente
 
 
 ## Metricas

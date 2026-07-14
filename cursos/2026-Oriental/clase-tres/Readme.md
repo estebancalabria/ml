@@ -633,3 +633,65 @@ plt.show()
 
 ## Metricas
 
+* Accuracy
+  * Que proporcion del total predecimos bien (Casos correcto / Total de Los casos)
+* Precision
+  * De lo que predije como positivo, cuanto era realmente positivo
+  * De los que dije que estaban enfermos, cuantos realmente estaban enfermos
+  * Preccision = TP / TP + FP
+* Recall
+ * De los positivos reales, cuantos logre detectar
+ * Recal = TP / TP + FN 
+* Specificity
+ * De los negativos reales, cuantos descarte bien
+ * De los sanos, cuantos descarte bien
+ * Specificity = TN / TN + FP
+
+* Calculo sin skit-learn
+  
+```python
+# Extraer valores de la matriz de confusión
+TP = matriz_confusion[0, 0]  # Enfermo predicho como enfermo
+FN = matriz_confusion[0, 1]  # Enfermo predicho como sano
+FP = matriz_confusion[1, 0]  # Sano predicho como enfermo
+TN = matriz_confusion[1, 1]  # Sano predicho como sano
+
+# Accuracy
+accuracy = (TP + TN) / (TP + TN + FP + FN)
+
+# Precision
+precision = TP / (TP + FP)
+
+# Recall (Sensibilidad)
+recall = TP / (TP + FN)
+
+# Specificity (Especificidad)
+specificity = TN / (TN + FP)
+
+print(f"Accuracy    : {accuracy:.4f}")
+print(f"Precision   : {precision:.4f}")
+print(f"Recall      : {recall:.4f}")
+print(f"Specificity : {specificity:.4f}")
+
+```
+
+# Calculo con Scikit-learn
+
+````python
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score
+)
+
+accuracy = accuracy_score(y_real, y_pred)
+
+# Como 0 = Enfermo = Positivo
+precision = precision_score(y_real, y_pred, pos_label=0)
+
+recall = recall_score(y_real, y_pred, pos_label=0)
+
+print(f"Accuracy    : {accuracy:.4f}")
+print(f"Precision   : {precision:.4f}")
+print(f"Recall      : {recall:.4f}")
+```

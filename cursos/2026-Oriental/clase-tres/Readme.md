@@ -588,5 +588,48 @@ print("Matriz de Confusión:")
 print(matriz_confusion)
 ```
 
+* La dibujamos con los nombres de las variables
+
+```
+plt.figure(figsize=(8,6))
+
+plt.imshow(matriz_confusion, cmap="Blues")
+
+plt.colorbar(label="Cantidad de casos")
+
+# Etiquetas de los ejes
+plt.xticks([0, 1], ["Predicho: Enfermo (0)", "Predicho: Sano (1)"])
+plt.yticks([0, 1], ["Real: Enfermo (0)", "Real: Sano (1)"])
+
+# Valores y significado de cada celda
+etiquetas = [
+    ["Verdadero Positivo\n(VP)", "Falso Negativo\n(FN)"],
+    ["Falso Positivo\n(FP)", "Verdadero Negativo\n(VN)"]
+]
+
+for i in range(2):
+    for j in range(2):
+        plt.text(
+            j,
+            i,
+            f"{etiquetas[i][j]}\n{matriz_confusion[i, j]}",
+            ha="center",
+            va="center",
+            color="black"
+        )
+
+plt.title("Matriz de Confusión")
+plt.xlabel("Clase Predicha")
+plt.ylabel("Clase Real")
+
+plt.tight_layout()
+plt.show()
+```
+
+* Graficos
+
+<img width="771" height="590" alt="image" src="https://github.com/user-attachments/assets/c89d7b76-57bc-4dc7-abb7-d685e62a1ca0" />
+
+
 ## Metricas
 

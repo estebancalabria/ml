@@ -143,6 +143,9 @@ plt.show()
  * RMSE : LA raiz cuadrada del MSE (para mostrarlo en una magnitud comparable a los datos de entrada)
  * R2 : Mide el error en una magnitud que va entre 0 y 1
 
+
+## Metricas Primer Caso
+
 ```python
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
@@ -218,6 +221,32 @@ plt.show()
 
 <img width="691" height="471" alt="image" src="https://github.com/user-attachments/assets/f4f9281d-5030-47e6-acb5-3156b17a22de" />
 
+* Calculo del error en el segundo caso
+
+```
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+mae_a = mean_absolute_error(y, y_pred)
+mse_a = mean_squared_error(y, y_pred)
+rmse_a = np.sqrt(mse_a)
+r2_a = r2_score(y, y_pred)
+
+print(f"MAE: {mae_a:.4f}")
+print(f"MSE: {mse_a:.4f}")
+print(f"RMSE: {rmse_a:.4f}")
+print(f"R2: {r2_a:.4f}")
+```
+
+* Para el primer ejemplo me dio
+
+```
+MAE: 0.3693
+MSE: 0.1809
+RMSE: 0.4254
+R2: 0.9761
+```
+
+* 
 
 ## Colinealidad
 

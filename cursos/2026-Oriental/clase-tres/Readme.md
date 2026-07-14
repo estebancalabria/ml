@@ -272,10 +272,26 @@ R2: 0.0007
 * Calcula la regresion lineal (el r2) entre todos los pares de variables y estudia colinealidad
 * Es muy util en la exploracion de datos
  
-```
+```python
 horas_estudio = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9,10])
 asistencia = np.array([92, 55, 98, 60, 85, 65, 90, 58, 95, 70])  
 notas = np.array([1.5, 2.3, 2.5, 3.2, 5.5, 6, 7.3, 8.1, 8.5, 9.5])
+```
+
+* Calculamos la matriz de correlacion con numpy
+
+```
+import numpy as np
+
+nombres = ["Horas de Estudio", "Asistencia", "Notas"]
+matriz_datos =  np.array([horas_estudio, asistencia, notas])
+
+print(matriz_datos)
+
+matriz_correlacion_numpy = np.corrcoef(matriz_datos)
+
+print("Matriz de correlación:")
+print(matriz_correlacion_numpy)
 
 ```
 

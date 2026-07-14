@@ -157,6 +157,22 @@ print(f"RMSE: {rmse_a:.4f}")
 print(f"R2: {r2_a:.4f}")
 ```
 
+### Otro ejemplo donde no haya relacion entre las variables
+
+```
+import numpy as np
+
+horas_estudio_b = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9,10])
+notas_b = np.array([6.5, 4.0, 7.8, 5.2, 6.9, 4.5, 7.1, 5.8, 6.0, 5.5])
+
+#OJO: 
+print(horas_estudio_b)
+
+horas_estudio_b = horas_estudio_b.reshape(-1, 1)
+
+print(horas_estudio_b)
+```
+
 ## Colinealidad
 
 ## Reduccion de la dimensionalidad

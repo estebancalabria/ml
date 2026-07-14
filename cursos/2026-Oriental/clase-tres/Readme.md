@@ -38,4 +38,18 @@
 
 ---
 
-# Metricas
+# Regresion
+
+## Metricas
+
+* Tres metricas de error
+
+## Colinealidad
+
+## Reduccion de la dimensionalidad
+
+---
+
+# Clasificacion
+
+## Metricas

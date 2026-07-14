@@ -173,6 +173,52 @@ horas_estudio_b = horas_estudio_b.reshape(-1, 1)
 print(horas_estudio_b)
 ```
 
+* Voy a generar el segundo grafico
+
+```python
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+
+X = horas_estudio_b
+y = notas_b
+
+modelo_b = LinearRegression()
+modelo_b.fit(X, y)
+
+y_pred = modelo_b.predict(X)
+
+print(y_pred)
+print(y)
+
+
+# Gráfico
+plt.figure(figsize=(8,5))
+
+# Puntos reales
+plt.scatter(X, y, color="blue", label="Datos reales")
+
+# Línea de regresión
+orden = np.argsort(X.flatten())
+plt.plot(X.flatten()[orden],
+         y_pred[orden],
+         color="red",
+         linewidth=2,
+         label="Regresión lineal")
+
+plt.xlabel("Horas de estudio")
+plt.ylabel("Nota")
+plt.title("Regresión Lineal: Horas de estudio vs Nota")
+plt.legend()
+plt.grid(True)
+
+plt.show()
+```
+
+* Genero este grafico
+
+<img width="691" height="471" alt="image" src="https://github.com/user-attachments/assets/f4f9281d-5030-47e6-acb5-3156b17a22de" />
+
+
 ## Colinealidad
 
 ## Reduccion de la dimensionalidad
@@ -182,3 +228,4 @@ print(horas_estudio_b)
 # Clasificacion
 
 ## Metricas
+

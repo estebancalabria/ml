@@ -246,7 +246,14 @@ RMSE: 0.4254
 R2: 0.9761
 ```
 
-* 
+* Para el segundo ejemplo me dio
+
+```
+MAE: 0.9248
+MSE: 1.2632
+RMSE: 1.1239
+R2: 0.0007
+```
 
 ## Colinealidad
 

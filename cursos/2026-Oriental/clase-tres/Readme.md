@@ -295,6 +295,47 @@ print(matriz_correlacion_numpy)
 
 ```
 
+* Salida
+
+```
+[[ 1.   2.   3.   4.   5.   6.   7.   8.   9.  10. ]
+ [92.  55.  98.  60.  85.  65.  90.  58.  95.  70. ]
+ [ 1.5  2.3  2.5  3.2  5.5  6.   7.3  8.1  8.5  9.5]]
+Matriz de correlación:
+[[ 1.         -0.0523297   0.98798407]
+ [-0.0523297   1.         -0.04464665]
+ [ 0.98798407 -0.04464665  1.        ]]
+```
+
+#### Graficando matriz de correlacion
+
+```
+plt.figure(figsize=(6,5))
+
+plt.imshow(matriz_correlacion_numpy,
+           cmap="coolwarm",
+           vmin=-1,
+           vmax=1)
+
+plt.colorbar(label="Correlación")
+
+plt.xticks(range(len(nombres)), nombres, rotation=45)
+plt.yticks(range(len(nombres)), nombres)
+
+# Mostrar el valor en cada celda
+for i in range(len(nombres)):
+    for j in range(len(nombres)):
+        plt.text(j, i,
+                 f"{matriz_correlacion_numpy[i, j]:.2f}",
+                 ha="center",
+                 va="center",
+                 color="black")
+
+plt.title("Heatmap de Correlaciones")
+plt.tight_layout()
+plt.show()
+```
+
 ## Reduccion de la dimensionalidad
 
 ---

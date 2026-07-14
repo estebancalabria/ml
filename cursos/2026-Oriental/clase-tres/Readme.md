@@ -271,6 +271,9 @@ R2: 0.0007
 
 * Calcula la regresion lineal (el r2) entre todos los pares de variables y estudia colinealidad
 * Es muy util en la exploracion de datos
+* Hay dos formas de calcular la matriz de correlacion
+  * Numpy -> np.corrcoef(matriz_datos)
+  * Pandas -> df.corr()
  
 ```python
 horas_estudio = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9,10])
@@ -339,7 +342,22 @@ plt.show()
 * Me genero este grafico
 
 <img width="595" height="482" alt="image" src="https://github.com/user-attachments/assets/f930ea9f-474a-44a0-a781-4fe21fa95d53" />
-  
+
+### Matriz de Correlacion con Pandas
+
+```
+import pandas as pd
+
+df = pd.DataFrame({
+    "Horas de Estudio": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "Asistencia": [92, 55, 98, 60, 85, 65, 90, 58, 95, 70],
+    "Notas": [1.5, 2.3, 2.5, 3.2, 5.5, 6, 7.3, 8.1, 8.5, 9.5]
+})
+
+matriz_correlacion = df.corr()
+
+print(matriz_correlacion)
+```
 
 ## Reduccion de la dimensionalidad
 

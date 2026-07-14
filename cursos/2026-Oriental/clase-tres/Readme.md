@@ -570,5 +570,23 @@ corr = df.corr()
 
 # Clasificacion
 
+* Generamos la matriz de confusion
+
+```
+from sklearn.metrics import confusion_matrix
+#... levante los datos... entreno el modelo...
+
+# 1 Sano    (Negativo)
+# 0 Enfermo (Positivo)
+
+y_real = [1,1,1,1,1,0,0,0,0,0]
+y_pred = [1,1,1,0,1,0,0,0,0,0]
+
+matriz_confusion = confusion_matrix(y_real, y_pred)
+
+print("Matriz de Confusión:")
+print(matriz_confusion)
+```
+
 ## Metricas
 

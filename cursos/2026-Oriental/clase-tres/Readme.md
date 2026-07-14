@@ -54,6 +54,8 @@ import numpy as np
 
 horas_estudio_a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9,10])
 notas_a = np.array([1.5, 2.3, 2.5, 3.2, 5.5, 6, 7.3, 8.1, 8.5, 9.5])
+
+horas_estudio_a
 ```
 
 > [!NOTE]

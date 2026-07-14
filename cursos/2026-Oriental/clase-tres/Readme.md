@@ -130,6 +130,11 @@ plt.grid(True)
 plt.show()
 ```
 
+* Genero este grafico
+
+<img width="686" height="471" alt="image" src="https://github.com/user-attachments/assets/537bcdd2-1da6-4947-8690-194183722063" />
+
+
 ## Metricas
 
 * Tres metricas de error

@@ -503,6 +503,16 @@ df = pd.read_csv("datos_estudio_asistencia_notas.csv")
 df.head()
 ```
 
+* O lo levanto desde Internet
+
+```python
+import pandas as pd
+
+df = pd.read_csv("https://raw.githubusercontent.com/estebancalabria/ml/refs/heads/main/cursos/2026-Oriental/clase-tres/datos_estudio_asistencia_notas.csv")
+
+df.head()
+```
+
 * Hacemos lo mismo que antes
 
 ```python
@@ -535,6 +545,11 @@ plt.title("Heatmap de Correlaciones")
 plt.tight_layout()
 plt.show()
 ```
+
+* Grafico Generado
+
+<img width="595" height="482" alt="image" src="https://github.com/user-attachments/assets/e079951d-c0c5-40c0-9c72-22a86cdea99c" />
+
 
 ---
 

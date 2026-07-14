@@ -58,9 +58,31 @@ notas_a = np.array([1.5, 2.3, 2.5, 3.2, 5.5, 6, 7.3, 8.1, 8.5, 9.5])
 horas_estudio_a
 ```
 
+* Lo muestra
+
+```
+array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10])
+```
+
 > [!NOTE]
 > En este caso use Numpy para que se manejen los arrays mas eficientemente
+> El array asi como esta no funciona en scikit-learn hay que pasarlo de [1,2,3,4] a [ [1], [2], [3], [4] ]
 
+* Para que podamos usar los features en sciit learn los tengo que tranformar con reshape
+
+```
+import numpy as np
+
+horas_estudio_a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9,10])
+notas_a = np.array([1.5, 2.3, 2.5, 3.2, 5.5, 6, 7.3, 8.1, 8.5, 9.5])
+
+#OJO: 
+print(horas_estudio_a)
+
+horas_estudio_a = horas_estudio_a.reshape(-1, 1)
+
+print(horas_estudio_a)
+```
 
 ## Metricas
 

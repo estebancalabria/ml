@@ -255,9 +255,39 @@ RMSE: 1.1239
 R2: 0.0007
 ```
 
+* Que ver
+  * Cuando el MAE y el RMSE son parecidos es que no hay errores extremos
+
+> [!NOTA]
+> Una vez que tengo las metricas es una buena practica pedirle un analisis a la IA que me ayuda un monton
+
 ## Colinealidad
 
+* Es cuando dos (o mas) variables predictoras estan fuertemente correlacionadas entre si. El r2 (coeficiente de determinacion) es cercano a 1.
+
 ## Reduccion de la dimensionalidad
+
+---
+
+# Pandas
+
+* Vamos a hacer el mismo ejemplo con pandas
+
+```python
+import pandas as pd
+import numpy as np
+
+# Datos
+df = pd.DataFrame({
+    "Horas_Estudio": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "Nota": [1.5, 2.3, 2.5, 3.2, 5.5, 6, 7.3, 8.1, 8.5, 9.5]
+})
+
+# Variables independientes (X) y dependiente (y)
+X = df[["Horas_Estudio"]]   # Doble corchete => DataFrame
+y = df["Nota"]              # Serie
+
+```
 
 ---
 

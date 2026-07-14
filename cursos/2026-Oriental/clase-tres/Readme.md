@@ -101,6 +101,35 @@ print(y_pred)
 print(y)
 ```
 
+* Hago un gratico con matplotlib y la ayuda de la IA
+
+```python
+import matplotlib.pyplot as plt
+
+
+# Gráfico
+plt.figure(figsize=(8,5))
+
+# Puntos reales
+plt.scatter(X, y, color="blue", label="Datos reales")
+
+# Línea de regresión
+orden = np.argsort(X.flatten())
+plt.plot(X.flatten()[orden],
+         y_pred[orden],
+         color="red",
+         linewidth=2,
+         label="Regresión lineal")
+
+plt.xlabel("Horas de estudio")
+plt.ylabel("Nota")
+plt.title("Regresión Lineal: Horas de estudio vs Nota")
+plt.legend()
+plt.grid(True)
+
+plt.show()
+```
+
 ## Metricas
 
 * Tres metricas de error

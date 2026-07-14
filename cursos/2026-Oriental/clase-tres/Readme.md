@@ -84,6 +84,23 @@ horas_estudio_a = horas_estudio_a.reshape(-1, 1)
 print(horas_estudio_a)
 ```
 
+* Entrenamos un modelo de regresion Lineal
+
+```
+from sklearn.linear_model import LinearRegression
+
+X = horas_estudio_a
+y = notas_a
+
+modelo_a = LinearRegression()
+modelo_a.fit(X, y)
+
+y_pred = modelo_a.predict(X)
+
+print(y_pred)
+print(y)
+```
+
 ## Metricas
 
 * Tres metricas de error

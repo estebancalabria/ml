@@ -550,6 +550,21 @@ plt.show()
 
 <img width="595" height="482" alt="image" src="https://github.com/user-attachments/assets/e079951d-c0c5-40c0-9c72-22a86cdea99c" />
 
+## Probar con otro dataset...
+
+* Quiero ver si hay alguna correlacion entre la posicion del ranking de la fifa de estos paises
+```
+import pandas as pd
+
+df = pd.read_csv("https://raw.githubusercontent.com/estebancalabria/ml/refs/heads/main/datasets/fifa.csv")
+
+#Descartar primer columna de fecha
+df = df.iloc[:, 1:]
+
+corr = df.corr()
+```
+
+* Conclusion : Muy poca correlacion
 
 ---
 

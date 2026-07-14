@@ -336,6 +336,11 @@ plt.tight_layout()
 plt.show()
 ```
 
+* Me genero este grafico
+
+<img width="595" height="482" alt="image" src="https://github.com/user-attachments/assets/f930ea9f-474a-44a0-a781-4fe21fa95d53" />
+  
+
 ## Reduccion de la dimensionalidad
 
 ---

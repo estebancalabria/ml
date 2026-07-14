@@ -271,11 +271,19 @@ R2: 0.0007
 
 # Pandas
 
+* Nuestros datos de entrada en ML los podemos representar como
+  * Array de Python (poco eficiente)
+  * Array de Numpy
+  * Dataframe de Pandas
+
 * Vamos a hacer el mismo ejemplo con pandas
 
 ```python
 import pandas as pd
 import numpy as np
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+
 
 # Datos
 df = pd.DataFrame({
@@ -286,6 +294,48 @@ df = pd.DataFrame({
 # Variables independientes (X) y dependiente (y)
 X = df[["Horas_Estudio"]]   # Doble corchete => DataFrame
 y = df["Nota"]              # Serie
+
+modelo = LinearRegression()
+modelo.fit(X, y)
+
+y_pred = modelo.predict(X)
+
+plt.figure(figsize=(8,5))
+
+# Puntos reales
+plt.scatter(X, y, color="blue", label="Datos reales")
+
+# Línea de regresión
+orden = np.argsort(X.values.flatten())
+
+plt.plot(
+    X.values.flatten()[orden],
+    y_pred[orden],
+    color="red",
+    linewidth=2,
+    label="Regresión lineal"
+)
+
+plt.xlabel("Horas de estudio")
+plt.ylabel("Nota")
+plt.title("Regresión Lineal: Horas de estudio vs Nota")
+plt.legend()
+plt.grid(True)
+
+plt.show()
+
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+mae = mean_absolute_error(y, y_pred)
+mse = mean_squared_error(y, y_pred)
+rmse = np.sqrt(mse)
+r2 = r2_score(y, y_pred)
+
+print(f"MAE: {mae:.4f}")
+print(f"MSE: {mse:.4f}")
+print(f"RMSE: {rmse:.4f}")
+print(f"R²: {r2:.4f}")
+
 
 ```
 

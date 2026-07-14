@@ -492,7 +492,20 @@ print(f"R²: {r2:.4f}")
 
 ```
 
-## Trabajo con arc
+## Trabajo con archivos locales
+
+```python
+import pandas as pd
+
+df = pd.read_csv("datos_estudio_asistencia_notas.csv")
+
+df.head()
+```
+
+* Hacemos lo mismo que antes
+
+```
+```
 
 ---
 

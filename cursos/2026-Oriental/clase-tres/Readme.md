@@ -264,6 +264,20 @@ R2: 0.0007
 ## Colinealidad
 
 * Es cuando dos (o mas) variables predictoras estan fuertemente correlacionadas entre si. El r2 (coeficiente de determinacion) es cercano a 1.
+* Si hay colinealidd entre nuetra entrada (features) y el target (lo que queremos predecir), todo bien, excelente
+  * El problema es cuando dos variables de entrada (features) son colineales, las dos aportan la misma informacion (o parecida) 
+
+### Matriz de Correlacion
+
+* Calcula la regresion lineal (el r2) entre todos los pares de variables y estudia colinealidad
+* Es muy util en la exploracion de datos
+
+```
+horas_estudio = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9,10])
+asistencia = np.array([92, 55, 98, 60, 85, 65, 90, 58, 95, 70])  
+notas = np.array([1.5, 2.3, 2.5, 3.2, 5.5, 6, 7.3, 8.1, 8.5, 9.5])
+
+```
 
 ## Reduccion de la dimensionalidad
 

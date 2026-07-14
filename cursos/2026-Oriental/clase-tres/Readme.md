@@ -271,7 +271,7 @@ R2: 0.0007
 
 * Calcula la regresion lineal (el r2) entre todos los pares de variables y estudia colinealidad
 * Es muy util en la exploracion de datos
-
+ 
 ```
 horas_estudio = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9,10])
 asistencia = np.array([92, 55, 98, 60, 85, 65, 90, 58, 95, 70])  

@@ -633,15 +633,30 @@ plt.show()
 
 ## Metricas
 
+> [!NOTE]
+> El positivo es lo que el modelo esta bueno que prediga (segun el negocio)
+> Pacientes enfermos
+> Transacciones Fraudulentas
+> Clentes potenciales
+
 * Accuracy
   * Que proporcion del total predecimos bien (Casos correcto / Total de Los casos)
+  * Es lo primero que calculo
+  * Es una medida general
+  * No siempre es buena
+    * Ejemplo. Quiero detectar transacciones fraudulentas.
+      * Tengo un dataset con 1000 transacciones ok y una fraudulenta
+      * El modelo me detecta que no hay transaccion fraudulenta
+      * Accuracy altisimo pero el modelo fallo en predecir lo que a mi me importa
 * Precision
   * De lo que predije como positivo, cuanto era realmente positivo
   * De los que dije que estaban enfermos, cuantos realmente estaban enfermos
   * Preccision = TP / TP + FP
+  * De las transacciones que predije como fraudulentas, cuantas realmente lo eran
 * Recall
  * De los positivos reales, cuantos logre detectar
- * Recal = TP / TP + FN 
+ * Recal = TP / TP + FN
+ * De las transacciones fraudulentas reales, cuantas logre detectar
 * Specificity
  * De los negativos reales, cuantos descarte bien
  * De los sanos, cuantos descarte bien
@@ -694,4 +709,13 @@ recall = recall_score(y_real, y_pred, pos_label=0)
 print(f"Accuracy    : {accuracy:.4f}")
 print(f"Precision   : {precision:.4f}")
 print(f"Recall      : {recall:.4f}")
+```
+
+* Salida
+
+```
+Accuracy    : 0.9000
+Precision   : 0.8333
+Recall      : 1.0000
+Specificity : 0.8000
 ```

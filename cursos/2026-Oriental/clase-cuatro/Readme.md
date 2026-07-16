@@ -224,7 +224,7 @@ productos_mayores_200 = ventas[ventas["precio"] > 200]["producto"]
 print(productos_mayores_200)
 ```
 
-# Explorar Datos
+# Explorar y preparar Datos
 
 * Metodos
  * unique
@@ -282,6 +282,51 @@ print(personas["sexo"].value_counts())
 personas["altura_cm"] = personas["altura"] * 100  #<<< Estoy creando una columna nueva
 print(personas)
 
+##Si quiero una copia sin esa columna, pero ojo que al copiarlo duplico la memoria
+persona_sin_altura = personas[["nombre", "sexo", "altura"]].copy()  #<<< Estoy creando un nuevo dataframe sin la columna altura_cm
+
 #Ahora las variables altura y altura_cm son colineales / estan correlacionadas, voy a borrar una
+#OJITO CON EL DROP : Es permanente
 personas.drop(columns=["altura"], inplace=True)  #<<< Estoy borrando una columna existente
+print(personas)
 ```
+
+* Manejo de los valore nulos
+
+> [!NOTA]
+> Siempre hay que sacar los valor nulos antes de entrenar un modelo de ML
+
+```
+
+con_nulos = pd.DataFrame({
+    "nombre" : ["Juan", "Pedro", "Maria", "Ana", "Luis"],
+    "nota" : [7, 8, np.nan, 10, 6]
+})
+
+print(con_nulos.isnull())  #<<< Me dice si hay valores nulos en el dataframe
+print("---")
+print(con_nulos.isnull().sum())
+print("---")
+
+##---
+## Caso 1 : Quitar filas con valores nulos
+print("Caso 1 : Quitar filas con valores nulos")
+quitar_nulos = con_nulos.copy()
+quitar_nulos.dropna(inplace=True)  #<<< Estoy borrando las filas que tienen valores nulos   
+print(quitar_nulos)
+print("---")
+
+##---
+print("Caso 2 : Rellenar los valores nulos con un valor especifico")
+rellenar_nulos = con_nulos.copy()
+rellenar_nulos["nota"].fillna(0, inplace=True)  #<<< Estoy rellenando los valores nulos con 0
+print(rellenar_nulos)
+
+print("---")
+print("Caso 3 : Rellenar los valores nulos con la media de la columna")
+rellenar_nulos_media = con_nulos.copy()
+media_nota = rellenar_nulos_media["nota"].mean()  #<<< Calculo la media de la columna nota
+rellenar_nulos_media["nota"].fillna(media_nota, inplace=True)  #<<< Estoy rellenando los valores nulos con la media de la columna nota
+print(rellenar_nulos_media)
+```
+

@@ -449,3 +449,23 @@ print(df.head(3))
 
 ---
 
+## Ejercicio Integrador
+
+* Entrenar un modelo de ML Basado en arboles utilizando encodings de las variables
+
+* Armando el data set
+
+```
+import pandas as pd
+
+df = pd.DataFrame({
+    'nivel_educativo': ['Secundario', 'Universitario', 'Posgrado', 'Universitario',
+                         'Secundario', 'Posgrado', 'Universitario', 'Secundario'],
+    'tipo_empleo': ['Relacion_dependencia', 'Independiente', 'Relacion_dependencia', 'Independiente',
+                     'Independiente', 'Relacion_dependencia', 'Relacion_dependencia', 'Independiente'],
+    'ingreso_mensual': [45000, 62000, 90000, 55000, 38000, 105000, 71000, 41000],
+    'aprobado': ['No', 'Si', 'Si', 'Si', 'No', 'Si', 'Si', 'No']
+})
+
+df
+```

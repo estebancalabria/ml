@@ -1,3 +1,49 @@
 # Clase Cuatro - 16 de Julio del 2026
 
 # Repaso 
+
+* Formas de Definir el Data Set
+  * Arrays De Python
+  * Numpy
+  * Pandas
+    * DataFrame
+    * Levantar desde un CSV
+* Metricas
+  * Regresion
+    * MAE : Mean Absolute Error
+    * Error elevados al cuadrado (Castiga errores altos)
+      * MSE : Mean Square Error
+      * RMSE : Root Mean Square Root
+    * R2 -> [0 y 1] -> 1 Son completamente colineales, 0 no tiene nada que ver una con la otra
+      * Explica que tan bueno es el modelo para predecir los datos
+      * R2 > 0.8 ---> Las variables estan relacionadas
+  * Clasificacion
+    * Matriz de Confusion
+    * Accuracy
+    * Precision
+    * Recall
+    * Specificity
+* Colinealidad / Correlacion
+  * Matriz de Correlacion
+  * Reduccion de la dimensionalidad (Feature Seleccion)
+
+ ---
+
+ # Laboratorio Preccission vs Recall
+
+```python
+import numpy as np
+
+# Es un banco que trata de predecir transaccions fraudulentas
+# 0 -> Transaccion Normal   1-> Transaccion Fraudulenta
+
+y_realidad = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0 ,0, 0, 0 ,0 ,0, 1, 1, 1, 1])
+
+# Modlelo a : "Conservador" : Marca fraude cuando esta muy seguro
+y_pred_a   = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0 ,0, 0, 0 ,0 ,0, 1, 0, 0, 0])
+
+# Modelo B : "Alarmista" ->  trata de no dejar pasar un posible fraude
+y_pred_a   = np.array([0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0 ,0 ,1, 0, 0 ,0 ,0, 1, 1, 1, 0])
+```
+
+# Pandas

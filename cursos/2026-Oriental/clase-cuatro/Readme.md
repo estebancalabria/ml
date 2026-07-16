@@ -136,3 +136,18 @@ ventas = pd.DataFrame({
     "stock" : [10, 100, 50, 20, 15, 30]
 })
 ```
+
+* Ver los primeros
+```python
+ventas.head(3)
+```
+
+* Ver los ultimo
+```python
+ventas.tail(3)
+```
+
+* Ver todos
+```python
+print(ventas)
+```

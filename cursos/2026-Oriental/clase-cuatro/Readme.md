@@ -142,6 +142,8 @@ ventas = pd.DataFrame({
 * Los metodos son
  * head
  * tail
+ * info
+ * describe
 
 * Ver los primeros
 ```python
@@ -180,4 +182,28 @@ ventas["precio"].describe()
 
 ```python
 print(type(ventas["precio"]))
+```
+
+* Para ver columnas y tipos
+
+```python
+print(ventas.columns)
+print(ventas.dtypes)
+```
+
+> [!NOTE]
+> Para entrenar modelos siempre vamos a usar columnas numericas (int o float)
+
+## Seleccionar Datos
+
+```
+
+# Select precio from ventas
+precios = ventas["precio"]
+print(precios)
+
+# Select producto,stock from ventas
+# No cofundirse con el [[]] es un tema de python, si se pone un [] se obtiene una serie, si se pone [[]] se obtiene un dataframe
+productos_stock = ventas[ ["producto", "stock"] ]
+print(productos_stock)
 ```

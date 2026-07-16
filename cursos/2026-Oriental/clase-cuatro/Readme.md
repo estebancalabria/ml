@@ -246,3 +246,31 @@ print(personas["sexo"].unique())
 print()
 print(personas["sexo"].value_counts())
 ```
+
+* Un ejemplo donde hay datos mal cargados y tengo que modificar columnas existentes
+
+```python
+# Modificar columnas
+
+# Tengo un dataset con valores que estan mal cargados 
+personas = pd.DataFrame({
+    "nombre" : ["Juan", "Pedro", "Maria", "Ana", "Luis"],
+    "sexo" : ["M", "m", "f", "F", "M"],
+    "altura" : [1.70, 1.80, 1.60, 1.65, 1.75]
+})
+
+#Laveriable sexo cuantos datos posibles esperari que tuviera? -> 2
+print(personas["sexo"].unique())
+print()
+print(personas["sexo"].value_counts())
+
+
+print("-------------")
+
+# Voy a unificar los valores de la columna sexo, para que todos sean mayusculas
+personas["sexo"] = personas["sexo"].str.upper()  #<<< EStoy modificando una columna existente
+print()
+print(personas["sexo"].unique())
+print()
+print(personas["sexo"].value_counts())
+```

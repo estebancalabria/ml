@@ -85,5 +85,24 @@ print ("Recall:", recall_b)
 print ("Confusion Matrix:\n", confusion_matrix_b)
 ```
 
+* Me da esto
+
+```
+Modelo A
+Accuracy: 0.8636363636363636
+Precision: 1.0
+Recall: 0.25
+Confusion Matrix:
+ [[18  0]
+ [ 3  1]]
+------------------------------
+Modelo B
+Accuracy: 0.8181818181818182
+Precision: 0.5
+Recall: 0.75
+Confusion Matrix:
+ [[15  3]
+ [ 1  3]]
+```
 
 # Pandas

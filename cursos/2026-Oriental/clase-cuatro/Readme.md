@@ -379,3 +379,24 @@ print("---------------------------------------------------------")
 print("Revertido")
 print(df.head(3))
 ```
+
+## OneHotEncoder
+
+* Para categorias binarias
+
+```
+from sklearn.preprocessing import OneHotEncoder
+
+codificador = OneHotEncoder(sparse_output=False, drop="first")  #<<< drop="first" para evitar la trampa de la variable ficticia
+
+print("Original")
+print(df.head(3))
+
+
+print("---------------------------------------------------------")
+
+df["masculino"] = codificador.fit_transform(df[["genero"]])
+print("Transformado")
+print(df.head(3))
+
+```

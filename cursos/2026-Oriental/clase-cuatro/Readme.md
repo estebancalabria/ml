@@ -364,16 +364,18 @@ df = pd.DataFrame({
 from sklearn.preprocessing import OrdinalEncoder
 
 print("Original")
-print(df)
+print(df.head(3))
 
 codificador = OrdinalEncoder(categories=[["Primaria", "Secundaria", "Terciario", "Universitario"]])
 df[["nivel_educativo"]] = codificador.fit_transform(df[["nivel_educativo"]])
 
+print("---------------------------------------------------------")
 print("Transformado")
-print(df)
+print(df.head(3))
 
 #Vuelvo al original
 df[["nivel_educativo"]] = codificador.inverse_transform(df[["nivel_educativo"]])
+print("---------------------------------------------------------")
 print("Revertido")
-print(df)
+print(df.head(3))
 ```

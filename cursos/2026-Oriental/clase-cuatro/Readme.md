@@ -45,7 +45,7 @@ y_realidad = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0 ,0, 0, 0 ,0 ,0, 1, 
 y_pred_a   = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0 ,0, 0, 0 ,0 ,0, 1, 0, 0, 0])
 
 # Modelo B : "Alarmista" ->  trata de no dejar pasar un posible fraude
-y_pred_a   = np.array([0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0 ,0 ,1, 0, 0 ,0 ,0, 1, 1, 1, 0])
+y_pred_b   = np.array([0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0 ,0 ,1, 0, 0 ,0 ,0, 1, 1, 1, 0])
 ```
 
 * Calcular metricas para modelos a y modelo b

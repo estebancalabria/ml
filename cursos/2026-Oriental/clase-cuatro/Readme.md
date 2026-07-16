@@ -31,6 +31,8 @@
 
  # Laboratorio Preccission vs Recall
 
+* Definir mi Dataset
+  
 ```python
 import numpy as np
 
@@ -45,5 +47,29 @@ y_pred_a   = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0 ,0, 0, 0 ,0 ,0, 1, 
 # Modelo B : "Alarmista" ->  trata de no dejar pasar un posible fraude
 y_pred_a   = np.array([0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0 ,0 ,1, 0, 0 ,0 ,0, 1, 1, 1, 0])
 ```
+
+* Calcular metricas para modelos a y modelo b
+
+```
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    confusion_matrix
+)
+
+# Modelo A
+accuracy_a = accuracy_score(y_realidad, y_pred_a)
+precision_a = precision_score(y_realidad, y_pred_a)
+recall_a = recall_score(y_realidad, y_pred_a)
+confusion_matrix_a = confusion_matrix(y_realidad, y_pred_a)
+
+print ("Modelo A")
+print ("Accuracy:", accuracy_a)
+print ("Precision:", precision_a)
+print ("Recall:", recall_a)
+print ("Confusion Matrix:\n", confusion_matrix_a)
+```
+
 
 # Pandas

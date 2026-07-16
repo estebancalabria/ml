@@ -125,7 +125,7 @@ Confusion Matrix:
  
 * Permite levantar datos desde un excel o un archivo CSV
 
-* Un Data frame
+## Declaramos un Data frame
 
 ```python
 import pandas as pd
@@ -136,6 +136,12 @@ ventas = pd.DataFrame({
     "stock" : [10, 100, 50, 20, 15, 30]
 })
 ```
+
+## Metodos de Exploracion de Datos
+
+* Los metodos son
+ * head
+ * tail
 
 * Ver los primeros
 ```python
@@ -150,4 +156,28 @@ ventas.tail(3)
 * Ver todos
 ```python
 print(ventas)
+```
+
+* Info de todo
+  
+```python
+ventas.info()
+```
+
+* Descripcion de metricas basicas de toda la tabla (DataFrame)
+
+```python
+ventas.describe()
+```
+
+* Si queremos metricas de una columna sola
+
+```python
+ventas["precio"].describe()
+```
+
+* Cuando es una sola columna te devuelve un objeto de tipo Series
+
+```python
+print(type(ventas["precio"]))
 ```

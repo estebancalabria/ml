@@ -274,3 +274,14 @@ print(personas["sexo"].unique())
 print()
 print(personas["sexo"].value_counts())
 ```
+
+* Creacion de columnas nuevas y eliminacion de columnas
+
+```python
+#Creacion de columnas nuevas
+personas["altura_cm"] = personas["altura"] * 100  #<<< Estoy creando una columna nueva
+print(personas)
+
+#Ahora las variables altura y altura_cm son colineales / estan correlacionadas, voy a borrar una
+personas.drop(columns=["altura"], inplace=True)  #<<< Estoy borrando una columna existente
+```

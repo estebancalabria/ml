@@ -503,3 +503,16 @@ df[nombres_columnas_nuevas] = df_columnas_nuevas
 df.drop(columns=["tipo_empleo"], inplace=True)
 df
 ```
+
+* Defino mis features y mis labels (X e y)
+
+```
+
+X = df.drop(columns=["aprobado"])
+y = df["aprobado"]
+
+print("X:")
+print(X)
+print("y:")
+print(y)
+```

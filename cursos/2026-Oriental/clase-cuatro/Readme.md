@@ -516,3 +516,36 @@ print(X)
 print("y:")
 print(y)
 ```
+
+* Entreno un arbol de decision
+
+```
+from sklearn.tree import DecisionTreeClassifier
+
+modelo = DecisionTreeClassifier()
+modelo.fit(X, y)
+```
+
+* Visualizar el arbol como texto
+
+```
+from sklearn.tree import export_text
+
+reglas = export_text(modelo, feature_names=list(X.columns))
+print(reglas)
+```
+
+* Visualizer el arbol con matplotlib
+
+```
+import matplotlib.pyplot as plt
+from sklearn.tree import plot_tree
+
+plt.figure(figsize=(12, 6))
+plot_tree(modelo,
+          feature_names=X.columns,
+          class_names=['No aprobado', 'Aprobado'],
+          filled=True,
+          rounded=True)
+plt.show()
+```

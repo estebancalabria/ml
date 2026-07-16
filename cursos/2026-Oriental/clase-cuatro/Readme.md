@@ -355,3 +355,25 @@ df = pd.DataFrame({
 })
 
 ```
+
+## OrdinalEcoder
+
+* Se usan cuando las variables categoricas tienen un orden
+
+```python
+from sklearn.preprocessing import OrdinalEncoder
+
+print("Original")
+print(df)
+
+codificador = OrdinalEncoder(categories=[["Primaria", "Secundaria", "Terciario", "Universitario"]])
+df[["nivel_educativo"]] = codificador.fit_transform(df[["nivel_educativo"]])
+
+print("Transformado")
+print(df)
+
+#Vuelvo al original
+df[["nivel_educativo"]] = codificador.inverse_transform(df[["nivel_educativo"]])
+print("Revertido")
+print(df)
+```

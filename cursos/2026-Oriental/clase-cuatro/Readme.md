@@ -117,6 +117,9 @@ Confusion Matrix:
   * Modelo B: 0.25 -> Detecto una cuarta parte de los fraudes que hay
   * Modelo B : 0.75 -> De los fraudes detecto el 75% (1 lo dejo pasar)
 
+---
+---
+
 # Pandas
 
 * Estructuras
@@ -330,3 +333,25 @@ rellenar_nulos_media["nota"].fillna(media_nota, inplace=True)  #<<< Estoy rellen
 print(rellenar_nulos_media)
 ```
 
+---
+---
+
+# Encoding de Variables Categoricas
+
+* Variables Categoricas
+   * Ordinales
+   * Nominales (no ordinales)
+
+* Generamos primero nuestro data frame
+
+```python
+
+#Dataframe de 10 elementos
+
+df = pd.DataFrame({
+    "nivel_educativo" : ["Primaria", "Secundaria", "Terciario", "Universitario", "Primaria", "Secundaria", "Terciario", "Universitario", "Universitario", "Secundaria"],
+    "genero" : ["M", "F", "M", "F", "M", "F", "M", "F", "M", "F"]
+    "color" : ["Rojo", "Azul", "Verde", "Amarillo", "Rojo", "Azul", "Verde", "Amarillo", "Rojo", "Azul"]
+})
+
+```

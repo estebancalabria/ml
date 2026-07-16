@@ -207,3 +207,19 @@ print(precios)
 productos_stock = ventas[ ["producto", "stock"] ]
 print(productos_stock)
 ```
+
+## Filtrar datos
+
+```python
+# select * from ventas where precio > 200
+
+ventas_mayores_200 = ventas[ ventas["precio"] > 200 ]
+
+print(ventas_mayores_200)
+
+print("-------------")
+
+# sellect prodcuto from vetnas where precio > 200
+productos_mayores_200 = ventas[ventas["precio"] > 200]["producto"]
+print(productos_mayores_200)
+```

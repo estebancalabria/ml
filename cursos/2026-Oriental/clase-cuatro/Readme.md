@@ -105,4 +105,16 @@ Confusion Matrix:
  [ 1  3]]
 ```
 
+* Precision, recall y accuracy dan valores entre 0 y 1
+* Si me baso en el accuracy me quedo con el Modelo a -> 
+* Precision:
+  * Nos da una confianza alta en lo que dice el modelo que es fraude
+  * Modelo a :  1 -> Todo lo que marco como fraude lo era.
+  * Modelo b :  0.5 ->  La mitad de lo que detecto como fraude no lo era (o era fraude)
+* Recall
+  * Nos dice que dejo pasar por alto el modelo
+  * En los casos donde es caro que se te pase por alto un positivo (fraude) buscas recall alto
+  * Modelo B: 0.25 -> Detecto una cuarta parte de los fraudes que hay
+  * Modelo B : 0.75 -> De los fraudes detecto el 75% (1 lo dejo pasar)
+
 # Pandas

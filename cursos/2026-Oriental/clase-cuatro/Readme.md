@@ -469,3 +469,17 @@ df = pd.DataFrame({
 
 df
 ```
+
+* Codificamos con orfinal encoder nivel_educativo y aprobado
+
+```
+from sklearn.preprocessing import OrdinalEncoder
+
+codificador_nivel_educativo = OrdinalEncoder(categories=[["Secundario", "Universitario", "Posgrado"]])
+df[["nivel_educativo"]] = codificador_nivel_educativo.fit_transform(df[["nivel_educativo"]])
+
+codifiador_aprobado = OrdinalEncoder(categories=[["No", "Si"]])
+df[["aprobado"]] = codifiador_aprobado.fit_transform(df[["aprobado"]])
+
+df
+```

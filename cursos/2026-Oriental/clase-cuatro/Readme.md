@@ -382,7 +382,7 @@ print(df.head(3))
 
 ## OneHotEncoder
 
-* Para categorias binarias
+###  Para categorias binarias (M o F)
 
 ```
 from sklearn.preprocessing import OneHotEncoder
@@ -400,3 +400,52 @@ print("Transformado")
 print(df.head(3))
 
 ```
+
+### Para multiples categorias
+
+* Ejemplo para entenderlo
+```
+from sklearn.preprocessing import OneHotEncoder
+
+codificador = OneHotEncoder(sparse_output=False, drop="first")  
+
+color_codificado = codificador.fit_transform(df[["color"]])
+
+print(codificador.get_feature_names_out())
+print(color_codificado)
+```
+
+* Ahora actualizando el dataframe original
+
+```
+import pandas as pd
+from sklearn.preprocessing import OneHotEncoder
+
+df = pd.DataFrame({
+    "nivel_educativo" : ["Primaria", "Secundaria", "Terciario", "Universitario", "Primaria", "Secundaria", "Terciario", "Universitario", "Universitario", "Secundaria"],
+    "genero" : ["M", "F", "M", "F", "M", "F", "M", "F", "M", "F"],
+    "color" : ["Rojo", "Azul", "Verde", "Amarillo", "Rojo", "Azul", "Verde", "Amarillo", "Rojo", "Azul"]
+})
+
+
+print("Original")
+print(df.head(3))
+print("---------------------------")
+
+codificador = OneHotEncoder(sparse_output=False, drop="first") 
+
+df_columnas_nuevas = codificador.fit_transform(df[["color"]])
+nombres_columnas_nuevas = codificador.get_feature_names_out(["color"])
+
+df[nombres_columnas_nuevas] = df_columnas_nuevas
+
+print(df.head(3))
+
+print("---------------------------")
+# Borro el color
+df.drop(columns=["color"], inplace=True)
+print(df.head(3))
+```
+
+---
+

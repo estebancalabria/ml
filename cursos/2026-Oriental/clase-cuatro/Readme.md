@@ -39,10 +39,10 @@ import numpy as np
 # Es un banco que trata de predecir transaccions fraudulentas
 # 0 -> Transaccion Normal   1-> Transaccion Fraudulenta
 
-y_realidad = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0 ,0, 0, 0 ,0 ,0, 1, 1, 1, 1])
+y_realidad = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1])
 
 # Modlelo a : "Conservador" : Marca fraude cuando esta muy seguro
-y_pred_a   = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0 ,0, 0, 0 ,0 ,0, 1, 0, 0, 0])
+y_pred_a   = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0])
 
 # Modelo B : "Alarmista" ->  trata de no dejar pasar un posible fraude
 y_pred_b   = np.array([0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0 ,0 ,1, 0, 0 ,0 ,0, 1, 1, 1, 0])
@@ -69,6 +69,20 @@ print ("Accuracy:", accuracy_a)
 print ("Precision:", precision_a)
 print ("Recall:", recall_a)
 print ("Confusion Matrix:\n", confusion_matrix_a)
+
+print("------------------------------")
+
+# Modelo B
+accuracy_b = accuracy_score(y_realidad, y_pred_b)
+precision_b = precision_score(y_realidad, y_pred_b)
+recall_b = recall_score(y_realidad, y_pred_b)
+confusion_matrix_b = confusion_matrix(y_realidad, y_pred_b)
+
+print ("Modelo B")
+print ("Accuracy:", accuracy_b)
+print ("Precision:", precision_b)
+print ("Recall:", recall_b)
+print ("Confusion Matrix:\n", confusion_matrix_b)
 ```
 
 

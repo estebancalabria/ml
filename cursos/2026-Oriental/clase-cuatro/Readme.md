@@ -483,3 +483,23 @@ df[["aprobado"]] = codifiador_aprobado.fit_transform(df[["aprobado"]])
 
 df
 ```
+
+* Codificamos con OneHotEncoder el tipo_de_empleo
+
+  > [!NOTE]
+  > Como tiene solo dos posibilidades, podemos usar el ordinal encoder, da igual
+  > Pero lo hicimos asi para tener un ejemplo de cada uno
+
+```python
+# Ahora vamos a codificar la columna tipo_empleo usando OneHotEncoder
+# En este caso podria usar tambien OrdinalEncoder, porque los tipos de empleo son 2
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder
+
+codificador_tipo_empleo = OneHotEncoder(sparse_output=False, drop="first")
+df_columnas_nuevas = codificador_tipo_empleo.fit_transform(df[["tipo_empleo"]])
+nombres_columnas_nuevas = codificador_tipo_empleo.get_feature_names_out(["tipo_empleo"])
+df[nombres_columnas_nuevas] = df_columnas_nuevas
+df.drop(columns=["tipo_empleo"], inplace=True)
+df
+```

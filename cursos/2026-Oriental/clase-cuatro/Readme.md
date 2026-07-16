@@ -118,3 +118,21 @@ Confusion Matrix:
   * Modelo B : 0.75 -> De los fraudes detecto el 75% (1 lo dejo pasar)
 
 # Pandas
+
+* Estructuras
+  * Series        ->     Vector/Array
+  * Dataframe     ->     Tabla
+ 
+* Permite levantar datos desde un excel o un archivo CSV
+
+* Un Data frame
+
+```python
+import pandas as pd
+
+ventas = pd.DataFrame({
+    "producto" : ["Notebook", "Mouse", "Teclado", "Monitor", "Impresora", "WebCam"],
+    "precio" : [1000, 50, 80, 300, 150, 70],
+    "stock" : [10, 100, 50, 20, 15, 30]
+})
+```

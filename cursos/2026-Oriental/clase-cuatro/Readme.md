@@ -223,3 +223,26 @@ print("-------------")
 productos_mayores_200 = ventas[ventas["precio"] > 200]["producto"]
 print(productos_mayores_200)
 ```
+
+# Explorar Datos
+
+* Metodos
+ * unique
+ * value_counts 
+
+* Chequeo los datos
+  * Ver si cada columna categorica tiene la cantidad de posibilidades esperadas (a veces con la mayuscula, minuscula, trae problemas)
+  * Como se distribuyen los valores posibles (con esto hago un histograma)
+
+```python
+personas = pd.DataFrame({
+    "nombre" : ["Juan", "Pedro", "Maria", "Ana", "Luis"],
+    "sexo" : ["M", "M", "F", "F", "M"],
+    "altura" : [1.70, 1.80, 1.60, 1.65, 1.75]
+})
+
+#Laveriable sexo cuantos datos posibles esperari que tuviera? -> 2
+print(personas["sexo"].unique())
+print()
+print(personas["sexo"].value_counts())
+```

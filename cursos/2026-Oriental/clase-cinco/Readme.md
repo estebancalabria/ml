@@ -1312,3 +1312,41 @@ df.info()
 print(df.shape)
 print(df.isnull().sum())
 ```
+
+* Columnas
+```
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 418 entries, 0 to 417
+Data columns (total 12 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   PassengerId  418 non-null    int64  
+ 1   Survived     418 non-null    int64  
+ 2   Pclass       418 non-null    int64  
+ 3   Name         418 non-null    object 
+ 4   Sex          418 non-null    object 
+ 5   Age          332 non-null    float64
+ 6   SibSp        418 non-null    int64  
+ 7   Parch        418 non-null    int64  
+ 8   Ticket       418 non-null    object 
+ 9   Fare         417 non-null    float64
+ 10  Cabin        91 non-null     object 
+ 11  Embarked     418 non-null    object 
+dtypes: float64(2), int64(5), object(5)
+memory usage: 39.3+ KB
+```
+
+* Conclusiones
+  * Hay columnas que no aportan
+  * Hay columnas con nulos
+  * Hay columnas para codificar
+
+
+* Sacar las columnas que no nos interesan
+
+```
+df = df.drop(columns=["PassengerId",  "Name", "Ticket", "Cabin"])
+print(df.isnull().sum())
+```
+
+* 

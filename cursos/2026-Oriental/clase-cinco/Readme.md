@@ -1116,5 +1116,29 @@ Mi recomendación final: para clase, dejaría el EDA como “primer EDA básico�
 
 ---
 
+# Entrenando un modelo KNN
+
+* Sin Normalizar las variables
+  
+```python
+# Entrenar sin normalizar
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn.metrics import mean_absolute_error, r2_score
+
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+modelo_knn_sin_escalar = KNeighborsRegressor(n_neighbors=5)
+modelo_knn_sin_escalar.fit(X_train, y_train)
+
+y_pred_sin_escalar = modelo_knn_sin_escalar.predict(X_test)
+
+mae_sin_escalar = mean_absolute_error(y_test, y_pred_sin_escalar)
+r2_sin_escalar = r2_score(y_test, y_pred_sin_escalar)
+
+print("MAE sin escalar:", mae_sin_escalar)
+print("R2 sin escalar:", r2_sin_escalar)
+```
 # 
 

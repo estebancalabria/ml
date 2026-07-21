@@ -71,3 +71,19 @@ df = pd.DataFrame({
 df
 
 ```
+
+* Escalando con StandardScaller (Se usa en el 90% de los casos)
+
+```
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+
+df_scaled = pd.DataFrame(
+    scaler.fit_transform(df),
+    columns = df.columns
+)
+
+
+df_scaled
+```

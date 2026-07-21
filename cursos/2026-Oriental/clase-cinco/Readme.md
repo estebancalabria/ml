@@ -330,3 +330,13 @@ corr_with_label = df_total.corr()["Value"].sort_values(ascending=False)
 
 print(corr_with_label)
 ```
+
+* Deteccion de outliners
+
+```
+# Deteccion de outliers con boxplot sin seaborn
+plt.figure(figsize=(10, 8))
+
+X.boxplot()
+plt.show()
+```

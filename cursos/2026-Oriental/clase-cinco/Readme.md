@@ -283,12 +283,26 @@ print(X.describe())
 print("---------------------------------")
 ```
 
-* Graficos con MatPlotLib (Histograma)
+* Graficos con MatPlotLi
+
+* Histograma de los features
 
 ```
 import matplotlib.pyplot as plt
 
 X.hist(figsize=(10, 8))
+
+plt.title("Distribucion de las variables")
+plt.show()
+
+```
+
+* Histograma de los labels
+
+```
+import matplotlib.pyplot as plt
+
+y.hist(figsize=(10, 8))
 
 plt.title("Distribucion de las variables")
 plt.show()
@@ -340,3 +354,8 @@ plt.figure(figsize=(10, 8))
 X.boxplot()
 plt.show()
 ```
+
+> [!NOTE]
+> Me llama la atencion los outliners en la columna populatios
+
+*

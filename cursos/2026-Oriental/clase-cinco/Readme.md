@@ -183,3 +183,46 @@ cm_scaled = confusion_matrix(y, y_pred_scaled)
 print(cm_scaled)
 ```
 
+# Cross Validation
+
+* Cuando quiero validar un modelo no es recomendable utilizar los mismos datos de entrenaminto que estuvimos usando
+* De esa manera si hay overfitting (el modelo memoriza los datos de entrenamiento) podemos pensar que tenemos un modelo muy bueno cuando en realidad es un memorizador
+* Por eso esta bueno que nuestros datasets tengan mas +100 (o + 1000 o +1M)
+* Vamos a dividir los datos en dos
+ * Datos de Entrenamiento
+ * Datos de Validacion ( para calcular las metricas del modelo)
+
+> [!NOTE]
+> Hasta ahora como estuvimos trabajando con datasets muy chicos utilizamos los datos de entrenamiento para validar
+> En la practica se dividen, y se valida el modelo con datos que no conocio en el entrenamiento
+
+* Estandar de division
+ * 80% datos -> Etrenamiento
+ * 20% datos -> Validacion
+
+* El proceso de reentrenar un modelo con distintas divisiones entre datos de entrenamiento y  validacion se llama : cross validation
+
+
+```
+import pandas as pd
+from sklearn.model_selection import train_test_split
+
+df = pd.DataFrame({
+    "edad" : [20, 21, 39, 63, 45],
+    "sueldo" : [1000, 2000, 3000, 4000, 5000],
+    "aprueba" : [1, 0, 1, 0, 0]
+})
+
+#Dividimos el dataset en entrenamiento y prueba
+
+
+X = df[["edad", "sueldo"]]
+y = df["aprueba"]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+print("X")
+print(X)
+print("X_train:")
+print(X_train)
+``` 

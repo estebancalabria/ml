@@ -279,3 +279,36 @@ print("Descripcion del dataset")
 print(X.describe())
 print("---------------------------------")
 ```
+
+* Graficos con MatPlotLib (Histograma)
+
+```
+import matplotlib.pyplot as plt
+
+X.hist(figsize=(10, 8))
+
+plt.title("Distribucion de las variables")
+plt.show()
+
+```
+
+* Matriz de Correlacion
+
+```python
+# Correlacion entre variables sin seaborn
+import matplotlib.pyplot as plt
+
+corr = X.corr()
+
+plt.figure(figsize=(10, 8))
+plt.imshow(corr, cmap='coolwarm', interpolation='nearest')
+plt.colorbar()
+
+
+plt.title("Matriz de correlacion")
+
+plt.xticks(range(len(corr.columns)), corr.columns, rotation=90)
+plt.yticks(range(len(corr.columns)), corr.columns)
+
+plt.show()
+```

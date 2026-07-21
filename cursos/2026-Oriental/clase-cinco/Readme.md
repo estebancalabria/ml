@@ -164,3 +164,22 @@ print(cm)
 
 > [!NOTE]
 > El ejemplo anterior para un algotritmo basado en distancia como es la regresion logisitica no es confiable, el sueldo pesa mucho mas que la edad
+
+* Con Escalamiento
+```
+#Mismo ejemplo pero con escalamiento de datos (Mas preciso)
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+
+X_scaled = scaler.fit_transform(X)
+
+model_scaled = LogisticRegression()
+model_scaled.fit(X_scaled, y)
+
+y_pred_scaled = model_scaled.predict(X_scaled)
+
+#Matriz de confusion
+cm_scaled = confusion_matrix(y, y_pred_scaled)
+print(cm_scaled)
+```
+

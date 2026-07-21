@@ -230,3 +230,21 @@ print(X_train)
 * Para hacer cross validation vamos variando los valores de
  * random_state : Para que me de una division distinta
  * test_size : Para variar el tamanio entre la muestra e entreamiento y validacion
+
+---
+
+# Ejemplo Integrador
+
+* Vamos a utilizar el dataset de California Housing
+
+```python
+#California Housing
+from sklearn.datasets import fetch_california_housing
+import pandas as pd
+
+california_housing = fetch_california_housing()
+
+df = pd.DataFrame(california_housing.data, columns=california_housing.feature_names)
+
+df
+```

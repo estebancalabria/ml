@@ -45,3 +45,29 @@
   * ...
 
 ---
+
+# Normalizacion de Variables
+
+* Tengo dos variables en mi dataser
+  * Altura : Entre 50 y 250
+  * Peso : Entre 50 y 250
+  * Largo : 1000000000 y 100000000000000
+* La dimension impacta mucho para los algoritmos de distancia.
+* Valores muy grandes opacan a valores chicos, tenemos que llevar todo a una magnitud comun.
+* En general se lleva todo a una magnitud entre 0 y 1.
+
+> [NOTE!]
+> Los algoritmos basados en distancia requiren de normalizacion de variables
+
+```python
+
+import pandas as pd
+
+df = pd.DataFrame({
+    "edad" : [20, 21, 39, 63, 45],
+    "sueldo" : [1000, 2000, 3000, 4000, 5000],
+})
+
+df
+
+```

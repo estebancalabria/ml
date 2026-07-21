@@ -1453,3 +1453,50 @@ Confusion Matrix:
 corr = df_encoded.corr()
 print(corr)
 ```
+
+* Da como resultado
+
+```
+Survived    Pclass       Age     SibSp     Parch      Fare  \
+Survived    1.000000 -0.108615  0.008035  0.099943  0.159120  0.192036   
+Pclass     -0.108615  1.000000 -0.467853  0.001087  0.018721 -0.577313   
+Age         0.008035 -0.467853  1.000000 -0.071197 -0.043731  0.342357   
+SibSp       0.099943  0.001087 -0.071197  1.000000  0.306895  0.171912   
+Parch       0.159120  0.018721 -0.043731  0.306895  1.000000  0.230325   
+Fare        0.192036 -0.577313  0.342357  0.171912  0.230325  1.000000   
+Sex_female  1.000000 -0.108615  0.008035  0.099943  0.159120  0.192036   
+Sex_male   -1.000000  0.108615 -0.008035 -0.099943 -0.159120 -0.192036   
+Embarked_C  0.033684 -0.318543  0.162147 -0.016365 -0.005791  0.312503   
+Embarked_Q  0.115574  0.252608 -0.041310 -0.098824 -0.132948 -0.155193   
+Embarked_S -0.105883  0.120783 -0.118594  0.079367  0.092201 -0.179106   
+
+            Sex_female  Sex_male  Embarked_C  Embarked_Q  Embarked_S  
+Survived      1.000000 -1.000000    0.033684    0.115574   -0.105883  
+Pclass       -0.108615  0.108615   -0.318543    0.252608    0.120783  
+Age           0.008035 -0.008035    0.162147   -0.041310   -0.118594  
+SibSp         0.099943 -0.099943   -0.016365   -0.098824    0.079367  
+Parch         0.159120 -0.159120   -0.005791   -0.132948    0.092201  
+Fare          0.192036 -0.192036    0.312503   -0.155193   -0.179106  
+Sex_female    1.000000 -1.000000    0.033684    0.115574   -0.105883  
+Sex_male     -1.000000  1.000000   -0.033684   -0.115574    0.105883  
+Embarked_C    0.033684 -0.033684    1.000000   -0.199786   -0.767375  
+Embarked_Q    0.115574 -0.115574   -0.199786    1.000000   -0.474962  
+Embarked_S   -0.105883  0.105883   -0.767375   -0.474962    1.000000
+```
+
+* Observo que la correlacion entre Sex y survived es 1 (ni siquiera hace falta entrenar el modelo)
+
+> [!NOTE]
+> Como dice la frase "Las mujeres y los ninios primero" se ve reflejado en este dataset
+
+---
+
+# Proximos pasos....
+
+* Algorimos no supervisados -> Clustering
+* Algotimos de recomendaciones -> El usa netflix
+* Deteccion de anomalias
+* Profundizar en cada algoritmo
+  * Ajust de Hiper parametros de los algoritmos...
+ 
+> Cualquier cosa me puden escribir a https://www.linkedin.com/in/esteban-calabria-7a44401a/ para todo lo que necesiten

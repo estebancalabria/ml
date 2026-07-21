@@ -1435,3 +1435,21 @@ conf_matrix = confusion_matrix(y_test, y_pred)
 print("Confusion Matrix:")
 print(conf_matrix)
 ```
+
+* Da como resultado
+
+```
+Accuracy: 1.0
+Confusion Matrix:
+[[50  0]
+ [ 0 34]]
+```
+
+* Vamos explorar un poquito porque tan buen accuracy (desconfio)
+
+```
+# Matriz de correlacion con los datos originales
+
+corr = df_encoded.corr()
+print(corr)
+```

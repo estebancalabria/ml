@@ -1288,3 +1288,13 @@ Modelo                       MAE     MSE     RMSE    R2
 1       KNeighborsRegressor  0.4462  0.4324  0.6576  0.6700
 0          LinearRegression  0.5332  0.5559  0.7456  0.5758
 ```
+
+> [!NOTE]
+> El modelo RandomForestRegressor tiene un r2 de 0.8053 y con los datos que tengo aparentemente es el modelo mas adecuado para predecir
+
+---
+
+# Ejemplo de Clasificacion
+
+*  USaremos el dataset:
+ *  https://github.com/estebancalabria/ml/blob/main/datasets/titanic.csv

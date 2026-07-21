@@ -1140,5 +1140,42 @@ r2_sin_escalar = r2_score(y_test, y_pred_sin_escalar)
 print("MAE sin escalar:", mae_sin_escalar)
 print("R2 sin escalar:", r2_sin_escalar)
 ```
-# 
+
+* Ahora normalizando variables
+
+```
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import mean_absolute_error, r2_score
+
+# Dividir datos
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=42
+)
+
+# Escalar
+scaler = StandardScaler()
+
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Entrenar KNN
+modelo_knn_escalado = KNeighborsRegressor(n_neighbors=5)
+
+modelo_knn_escalado.fit(X_train_scaled, y_train)
+
+# Predicción
+y_pred_escalado = modelo_knn_escalado.predict(X_test_scaled)
+
+# Métricas
+mae_escalado = mean_absolute_error(y_test, y_pred_escalado)
+r2_escalado = r2_score(y_test, y_pred_escalado)
+
+print("MAE con StandardScaler:", mae_escalado)
+print("R2 con StandardScaler:", r2_escalado)
+```
 

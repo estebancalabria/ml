@@ -1360,4 +1360,40 @@ df["Fare"] = df["Fare"].fillna(df["Fare"].median())
 print(df.isnull().sum())
 ```
 
-* 
+* Encodign de Variables (con IA)
+
+```
+from sklearn.preprocessing import OneHotEncoder
+import pandas as pd
+
+# Columnas categóricas
+categoricas = ["Sex", "Embarked"]
+
+# Encoder
+encoder = OneHotEncoder(
+    sparse_output=False,
+    handle_unknown="ignore"
+)
+
+# Transformar
+encoded = encoder.fit_transform(df[categoricas])
+
+# DataFrame con nuevos nombres de columnas
+encoded_df = pd.DataFrame(
+    encoded,
+    columns=encoder.get_feature_names_out(categoricas),
+    index=df.index
+)
+
+# Reemplazar columnas originales
+df_encoded = pd.concat(
+    [
+        df.drop(columns=categoricas),
+        encoded_df
+    ],
+    axis=1
+)
+
+print(df_encoded.head())
+print(df_encoded.info())
+```

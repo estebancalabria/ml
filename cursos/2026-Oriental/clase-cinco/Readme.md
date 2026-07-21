@@ -128,3 +128,39 @@ df_min_max_scaled
 
 * El valor mas chico -> 0
 * Valor mas grande -> 1
+
+
+# Comparacion con o sin Escalado
+
+* Ejemplo si escalamiento
+```
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix
+
+df = pd.DataFrame({
+    "edad" : [20, 21, 39, 63, 45],
+    "sueldo" : [1000, 2000, 3000, 4000, 5000],
+    "aprueba" : [1, 0, 1, 0, 0]
+})
+
+#Uso Regresion Logistica
+#Ejemplo sin ecalamiento de datos (Mas impreciso)
+
+
+X = df[["edad", "sueldo"]]
+y = df["aprueba"]
+
+model = LogisticRegression()
+model.fit(X, y)
+
+y_pred = model.predict(X)
+
+#Matriz de confusion
+cm = confusion_matrix(y, y_pred)
+
+print(cm)
+```
+
+> [!NOTE]
+> El ejemplo anterior para un algotritmo basado en distancia como es la regresion logisitica no es confiable, el sueldo pesa mucho mas que la edad

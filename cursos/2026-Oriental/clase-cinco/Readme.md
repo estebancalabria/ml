@@ -264,6 +264,9 @@ print(y.isnull().sum())
 #EDA...
 ```
 
+> [!NOTE]
+> Ver que en este dataset viene separado los features (california_housing.data) de los labels (california_housing.target)
+
 * Exploracion de datos con pandas
 
 ```
@@ -311,4 +314,19 @@ plt.xticks(range(len(corr.columns)), corr.columns, rotation=90)
 plt.yticks(range(len(corr.columns)), corr.columns)
 
 plt.show()
+```
+
+* Observaciones hay una correlacion logica ente Cantidad de Habitaciones y Cantidad de dormitorios
+
+* Quisiera armar una variable de correlacion con el label
+  
+```
+#Correlacion con el label
+
+df_total = X.copy()
+df_total["Value"] = y
+
+corr_with_label = df_total.corr()["Value"].sort_values(ascending=False)
+
+print(corr_with_label)
 ```

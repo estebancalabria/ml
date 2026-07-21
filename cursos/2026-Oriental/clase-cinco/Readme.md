@@ -1298,3 +1298,9 @@ Modelo                       MAE     MSE     RMSE    R2
 
 *  USaremos el dataset:
  *  https://github.com/estebancalabria/ml/blob/main/datasets/titanic.csv
+ *  https://raw.githubusercontent.com/estebancalabria/ml/refs/heads/main/datasets/titanic.csv
+
+```
+df = pd.read_csv("https://raw.githubusercontent.com/estebancalabria/ml/refs/heads/main/datasets/titanic.csv")
+df.info()
+```

@@ -1141,6 +1141,17 @@ print("MAE sin escalar:", mae_sin_escalar)
 print("R2 sin escalar:", r2_sin_escalar)
 ```
 
+* Dio esto en el primer caso
+
+```
+MAE sin escalar: 0.8127975600775195
+R2 sin escalar: 0.14631049965900345
+```
+
+> [!NOTE]
+> El r2 es malisimo, diria que este modelo o me dice que las variable no predicen el target o el modelo es malisimo
+> Esto era esperado porque no escalamos las variables 
+
 * Ahora normalizando variables
 
 ```
@@ -1179,3 +1190,91 @@ print("MAE con StandardScaler:", mae_escalado)
 print("R2 con StandardScaler:", r2_escalado)
 ```
 
+* Este ahora nos da
+
+```
+MAE con StandardScaler: 0.4461535271317829
+R2 con StandardScaler: 0.6700101862970989
+```
+
+> [!NOTE]
+> Ahora podemos observar como el R2 subio muchisimo luego de escalar
+
+# Comparar con otros modelos (codigo generado con IA)
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+from sklearn.linear_model import LinearRegression
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn.svm import SVR
+from sklearn.ensemble import RandomForestRegressor
+
+from sklearn.metrics import (
+    mean_absolute_error,
+    mean_squared_error,
+    r2_score
+)
+
+import pandas as pd
+import numpy as np
+
+# Dividir datos
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=42
+)
+
+# Escalar
+scaler = StandardScaler()
+
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Modelos
+modelos = {
+    "LinearRegression": LinearRegression(),
+    "KNeighborsRegressor": KNeighborsRegressor(n_neighbors=5),
+    "SVR (SVM para regresión)": SVR(kernel="rbf"),
+    "RandomForestRegressor": RandomForestRegressor(
+        n_estimators=100,
+        random_state=42,
+        n_jobs=-1
+    )
+}
+
+# Guardar resultados
+resultados = []
+
+for nombre, modelo in modelos.items():
+
+    modelo.fit(X_train_scaled, y_train)
+
+    y_pred = modelo.predict(X_test_scaled)
+
+    mae = mean_absolute_error(y_test, y_pred)
+    mse = mean_squared_error(y_test, y_pred)
+    rmse = np.sqrt(mse)
+    r2 = r2_score(y_test, y_pred)
+
+    resultados.append({
+        "Modelo": nombre,
+        "MAE": round(mae, 4),
+        "MSE": round(mse, 4),
+        "RMSE": round(rmse, 4),
+        "R2": round(r2, 4)
+    })
+
+# Mostrar tabla ordenada por R2
+df_resultados = pd.DataFrame(resultados)
+
+df_resultados = df_resultados.sort_values(
+    by="R2",
+    ascending=False
+)
+
+print(df_resultados)
+```

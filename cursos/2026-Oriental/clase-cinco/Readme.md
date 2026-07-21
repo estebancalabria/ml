@@ -248,3 +248,18 @@ df = pd.DataFrame(california_housing.data, columns=california_housing.feature_na
 
 df
 ```
+
+* Vamos a hacer la exploracion de datos
+
+```
+print(df.shape)
+
+X = pd.DataFrame(california_housing.data, columns=california_housing.feature_names)
+y = pd.DataFrame(california_housing.target, columns=["Value"])
+
+#Hay nulos en el dataset?
+print(X.isnull().sum())
+print(y.isnull().sum())
+
+#EDA...
+```

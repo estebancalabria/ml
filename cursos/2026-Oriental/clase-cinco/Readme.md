@@ -1278,3 +1278,13 @@ df_resultados = df_resultados.sort_values(
 
 print(df_resultados)
 ```
+
+* El resultado dio
+
+```
+Modelo                       MAE     MSE     RMSE    R2
+3     RandomForestRegressor  0.3274  0.2552  0.5051  0.8053
+2  SVR (SVM para regresión)  0.3986  0.3570  0.5975  0.7276
+1       KNeighborsRegressor  0.4462  0.4324  0.6576  0.6700
+0          LinearRegression  0.5332  0.5559  0.7456  0.5758
+```

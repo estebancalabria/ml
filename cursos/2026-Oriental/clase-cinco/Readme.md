@@ -263,3 +263,19 @@ print(y.isnull().sum())
 
 #EDA...
 ```
+
+* Exploracion de datos con pandas
+
+```
+print("Ver las primeras filas")
+print(X.head())
+print("---------------------------------")
+
+print("Informacion del dataset")
+print(X.info())
+print("---------------------------------")
+
+print("Descripcion del dataset")
+print(X.describe())
+print("---------------------------------")
+```

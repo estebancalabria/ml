@@ -59,6 +59,8 @@
 > [NOTE!]
 > Los algoritmos basados en distancia requiren de normalizacion de variables
 
+## StandardScaler
+
 ```python
 
 import pandas as pd
@@ -87,3 +89,42 @@ df_scaled = pd.DataFrame(
 
 df_scaled
 ```
+
+* Funcionamiento
+ * Calculamos la media y esta va a ser nuesto 0
+ * Calculamos el desvio estandar : este va a ser 1 
+
+* Es senible a outlines
+
+```
+import pandas as pd
+
+df = pd.DataFrame({
+    "edad" : [20, 21, 39, 63, 4500],
+    "sueldo" : [1000, 2000, 3000, 4000, 5000],
+})
+
+df
+```
+
+> [NOTE!]
+> Una edad de 4500 anios es claramente un dato que esta mal que se conoce como outliner
+> Parte de la exploracion y preparacion de datos consisten en detectar y eliminar esos outliners para que los algotimos basados en distancia trabajemn mejor
+
+## Min Max Scaller
+
+```
+from sklearn.preprocessing import MinMaxScaler 
+
+scaler = MinMaxScaler()
+
+df_min_max_scaled = pd.DataFrame(
+    scaler.fit_transform(df),
+    columns = df.columns
+)
+
+df_min_max_scaled
+```
+
+* El valor mas chico -> 0
+* Valor mas grande -> 1

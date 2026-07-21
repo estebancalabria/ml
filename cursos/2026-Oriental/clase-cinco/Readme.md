@@ -1349,4 +1349,15 @@ df = df.drop(columns=["PassengerId",  "Name", "Ticket", "Cabin"])
 print(df.isnull().sum())
 ```
 
+* Manejo de los valores nulos (Reemplazo los valores nulos por la mediana de la columna)
+
+```
+#Reemplazo Age y Fare con la mediana de cada columna
+
+df["Age"] = df["Age"].fillna(df["Age"].median())
+df["Fare"] = df["Fare"].fillna(df["Fare"].median())
+
+print(df.isnull().sum())
+```
+
 * 

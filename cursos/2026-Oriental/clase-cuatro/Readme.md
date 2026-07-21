@@ -1,3 +1,551 @@
 # Clase Cuatro - 16 de Julio del 2026
 
 # Repaso 
+
+* Formas de Definir el Data Set
+  * Arrays De Python
+  * Numpy
+  * Pandas
+    * DataFrame
+    * Levantar desde un CSV
+* Metricas
+  * Regresion
+    * MAE : Mean Absolute Error
+    * Error elevados al cuadrado (Castiga errores altos)
+      * MSE : Mean Square Error
+      * RMSE : Root Mean Square Root
+    * R2 -> [0 y 1] -> 1 Son completamente colineales, 0 no tiene nada que ver una con la otra
+      * Explica que tan bueno es el modelo para predecir los datos
+      * R2 > 0.8 ---> Las variables estan relacionadas
+  * Clasificacion
+    * Matriz de Confusion
+    * Accuracy
+    * Precision
+    * Recall
+    * Specificity
+* Colinealidad / Correlacion
+  * Matriz de Correlacion
+  * Reduccion de la dimensionalidad (Feature Seleccion)
+
+ ---
+
+ # Laboratorio Preccission vs Recall
+
+* Definir mi Dataset
+  
+```python
+import numpy as np
+
+# Es un banco que trata de predecir transaccions fraudulentas
+# 0 -> Transaccion Normal   1-> Transaccion Fraudulenta
+
+y_realidad = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1])
+
+# Modlelo a : "Conservador" : Marca fraude cuando esta muy seguro
+y_pred_a   = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0])
+
+# Modelo B : "Alarmista" ->  trata de no dejar pasar un posible fraude
+y_pred_b   = np.array([0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0 ,0 ,1, 0, 0 ,0 ,0, 1, 1, 1, 0])
+```
+
+* Calcular metricas para modelos a y modelo b
+
+```
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    confusion_matrix
+)
+
+# Modelo A
+accuracy_a = accuracy_score(y_realidad, y_pred_a)
+precision_a = precision_score(y_realidad, y_pred_a)
+recall_a = recall_score(y_realidad, y_pred_a)
+confusion_matrix_a = confusion_matrix(y_realidad, y_pred_a)
+
+print ("Modelo A")
+print ("Accuracy:", accuracy_a)
+print ("Precision:", precision_a)
+print ("Recall:", recall_a)
+print ("Confusion Matrix:\n", confusion_matrix_a)
+
+print("------------------------------")
+
+# Modelo B
+accuracy_b = accuracy_score(y_realidad, y_pred_b)
+precision_b = precision_score(y_realidad, y_pred_b)
+recall_b = recall_score(y_realidad, y_pred_b)
+confusion_matrix_b = confusion_matrix(y_realidad, y_pred_b)
+
+print ("Modelo B")
+print ("Accuracy:", accuracy_b)
+print ("Precision:", precision_b)
+print ("Recall:", recall_b)
+print ("Confusion Matrix:\n", confusion_matrix_b)
+```
+
+* Me da esto
+
+```
+Modelo A
+Accuracy: 0.8636363636363636
+Precision: 1.0
+Recall: 0.25
+Confusion Matrix:
+ [[18  0]
+ [ 3  1]]
+------------------------------
+Modelo B
+Accuracy: 0.8181818181818182
+Precision: 0.5
+Recall: 0.75
+Confusion Matrix:
+ [[15  3]
+ [ 1  3]]
+```
+
+* Precision, recall y accuracy dan valores entre 0 y 1
+* Si me baso en el accuracy me quedo con el Modelo a -> 
+* Precision:
+  * Nos da una confianza alta en lo que dice el modelo que es fraude
+  * Modelo a :  1 -> Todo lo que marco como fraude lo era.
+  * Modelo b :  0.5 ->  La mitad de lo que detecto como fraude no lo era (o era fraude)
+* Recall
+  * Nos dice que dejo pasar por alto el modelo
+  * En los casos donde es caro que se te pase por alto un positivo (fraude) buscas recall alto
+  * Modelo B: 0.25 -> Detecto una cuarta parte de los fraudes que hay
+  * Modelo B : 0.75 -> De los fraudes detecto el 75% (1 lo dejo pasar)
+
+---
+---
+
+# Pandas
+
+* Estructuras
+  * Series        ->     Vector/Array
+  * Dataframe     ->     Tabla
+ 
+* Permite levantar datos desde un excel o un archivo CSV
+
+## Declaramos un Data frame
+
+```python
+import pandas as pd
+
+ventas = pd.DataFrame({
+    "producto" : ["Notebook", "Mouse", "Teclado", "Monitor", "Impresora", "WebCam"],
+    "precio" : [1000, 50, 80, 300, 150, 70],
+    "stock" : [10, 100, 50, 20, 15, 30]
+})
+```
+
+## Metodos de Exploracion de Datos
+
+* Los metodos son
+ * head
+ * tail
+ * info
+ * describe
+
+* Ver los primeros
+```python
+ventas.head(3)
+```
+
+* Ver los ultimo
+```python
+ventas.tail(3)
+```
+
+* Ver todos
+```python
+print(ventas)
+```
+
+* Info de todo
+  
+```python
+ventas.info()
+```
+
+* Descripcion de metricas basicas de toda la tabla (DataFrame)
+
+```python
+ventas.describe()
+```
+
+* Si queremos metricas de una columna sola
+
+```python
+ventas["precio"].describe()
+```
+
+* Cuando es una sola columna te devuelve un objeto de tipo Series
+
+```python
+print(type(ventas["precio"]))
+```
+
+* Para ver columnas y tipos
+
+```python
+print(ventas.columns)
+print(ventas.dtypes)
+```
+
+> [!NOTE]
+> Para entrenar modelos siempre vamos a usar columnas numericas (int o float)
+
+## Seleccionar Datos
+
+```
+
+# Select precio from ventas
+precios = ventas["precio"]
+print(precios)
+
+# Select producto,stock from ventas
+# No cofundirse con el [[]] es un tema de python, si se pone un [] se obtiene una serie, si se pone [[]] se obtiene un dataframe
+productos_stock = ventas[ ["producto", "stock"] ]
+print(productos_stock)
+```
+
+## Filtrar datos
+
+```python
+# select * from ventas where precio > 200
+
+ventas_mayores_200 = ventas[ ventas["precio"] > 200 ]
+
+print(ventas_mayores_200)
+
+print("-------------")
+
+# sellect prodcuto from vetnas where precio > 200
+productos_mayores_200 = ventas[ventas["precio"] > 200]["producto"]
+print(productos_mayores_200)
+```
+
+# Explorar y preparar Datos
+
+* Metodos
+ * unique
+ * value_counts 
+
+* Chequeo los datos
+  * Ver si cada columna categorica tiene la cantidad de posibilidades esperadas (a veces con la mayuscula, minuscula, trae problemas)
+  * Como se distribuyen los valores posibles (con esto hago un histograma)
+
+```python
+personas = pd.DataFrame({
+    "nombre" : ["Juan", "Pedro", "Maria", "Ana", "Luis"],
+    "sexo" : ["M", "M", "F", "F", "M"],
+    "altura" : [1.70, 1.80, 1.60, 1.65, 1.75]
+})
+
+#Laveriable sexo cuantos datos posibles esperari que tuviera? -> 2
+print(personas["sexo"].unique())
+print()
+print(personas["sexo"].value_counts())
+```
+
+* Un ejemplo donde hay datos mal cargados y tengo que modificar columnas existentes
+
+```python
+# Modificar columnas
+
+# Tengo un dataset con valores que estan mal cargados 
+personas = pd.DataFrame({
+    "nombre" : ["Juan", "Pedro", "Maria", "Ana", "Luis"],
+    "sexo" : ["M", "m", "f", "F", "M"],
+    "altura" : [1.70, 1.80, 1.60, 1.65, 1.75]
+})
+
+#Laveriable sexo cuantos datos posibles esperari que tuviera? -> 2
+print(personas["sexo"].unique())
+print()
+print(personas["sexo"].value_counts())
+
+
+print("-------------")
+
+# Voy a unificar los valores de la columna sexo, para que todos sean mayusculas
+personas["sexo"] = personas["sexo"].str.upper()  #<<< EStoy modificando una columna existente
+print()
+print(personas["sexo"].unique())
+print()
+print(personas["sexo"].value_counts())
+```
+
+* Creacion de columnas nuevas y eliminacion de columnas
+
+```python
+#Creacion de columnas nuevas
+personas["altura_cm"] = personas["altura"] * 100  #<<< Estoy creando una columna nueva
+print(personas)
+
+##Si quiero una copia sin esa columna, pero ojo que al copiarlo duplico la memoria
+persona_sin_altura = personas[["nombre", "sexo", "altura"]].copy()  #<<< Estoy creando un nuevo dataframe sin la columna altura_cm
+
+#Ahora las variables altura y altura_cm son colineales / estan correlacionadas, voy a borrar una
+#OJITO CON EL DROP : Es permanente
+personas.drop(columns=["altura"], inplace=True)  #<<< Estoy borrando una columna existente
+print(personas)
+```
+
+* Manejo de los valore nulos
+
+> [!NOTA]
+> Siempre hay que sacar los valor nulos antes de entrenar un modelo de ML
+
+```
+
+con_nulos = pd.DataFrame({
+    "nombre" : ["Juan", "Pedro", "Maria", "Ana", "Luis"],
+    "nota" : [7, 8, np.nan, 10, 6]
+})
+
+print(con_nulos.isnull())  #<<< Me dice si hay valores nulos en el dataframe
+print("---")
+print(con_nulos.isnull().sum())
+print("---")
+
+##---
+## Caso 1 : Quitar filas con valores nulos
+print("Caso 1 : Quitar filas con valores nulos")
+quitar_nulos = con_nulos.copy()
+quitar_nulos.dropna(inplace=True)  #<<< Estoy borrando las filas que tienen valores nulos   
+print(quitar_nulos)
+print("---")
+
+##---
+print("Caso 2 : Rellenar los valores nulos con un valor especifico")
+rellenar_nulos = con_nulos.copy()
+rellenar_nulos["nota"].fillna(0, inplace=True)  #<<< Estoy rellenando los valores nulos con 0
+print(rellenar_nulos)
+
+print("---")
+print("Caso 3 : Rellenar los valores nulos con la media de la columna")
+rellenar_nulos_media = con_nulos.copy()
+media_nota = rellenar_nulos_media["nota"].mean()  #<<< Calculo la media de la columna nota
+rellenar_nulos_media["nota"].fillna(media_nota, inplace=True)  #<<< Estoy rellenando los valores nulos con la media de la columna nota
+print(rellenar_nulos_media)
+```
+
+---
+---
+
+# Encoding de Variables Categoricas
+
+* Variables Categoricas
+   * Ordinales
+   * Nominales (no ordinales)
+
+* Generamos primero nuestro data frame
+
+```python
+
+#Dataframe de 10 elementos
+
+df = pd.DataFrame({
+    "nivel_educativo" : ["Primaria", "Secundaria", "Terciario", "Universitario", "Primaria", "Secundaria", "Terciario", "Universitario", "Universitario", "Secundaria"],
+    "genero" : ["M", "F", "M", "F", "M", "F", "M", "F", "M", "F"]
+    "color" : ["Rojo", "Azul", "Verde", "Amarillo", "Rojo", "Azul", "Verde", "Amarillo", "Rojo", "Azul"]
+})
+
+```
+
+## OrdinalEcoder
+
+* Se usan cuando las variables categoricas tienen un orden
+
+```python
+from sklearn.preprocessing import OrdinalEncoder
+
+print("Original")
+print(df.head(3))
+
+codificador = OrdinalEncoder(categories=[["Primaria", "Secundaria", "Terciario", "Universitario"]])
+df[["nivel_educativo"]] = codificador.fit_transform(df[["nivel_educativo"]])
+
+print("---------------------------------------------------------")
+print("Transformado")
+print(df.head(3))
+
+#Vuelvo al original
+df[["nivel_educativo"]] = codificador.inverse_transform(df[["nivel_educativo"]])
+print("---------------------------------------------------------")
+print("Revertido")
+print(df.head(3))
+```
+
+## OneHotEncoder
+
+###  Para categorias binarias (M o F)
+
+```
+from sklearn.preprocessing import OneHotEncoder
+
+codificador = OneHotEncoder(sparse_output=False, drop="first")  #<<< drop="first" para evitar la trampa de la variable ficticia
+
+print("Original")
+print(df.head(3))
+
+
+print("---------------------------------------------------------")
+
+df["masculino"] = codificador.fit_transform(df[["genero"]])
+print("Transformado")
+print(df.head(3))
+
+```
+
+### Para multiples categorias
+
+* Ejemplo para entenderlo
+```
+from sklearn.preprocessing import OneHotEncoder
+
+codificador = OneHotEncoder(sparse_output=False, drop="first")  
+
+color_codificado = codificador.fit_transform(df[["color"]])
+
+print(codificador.get_feature_names_out())
+print(color_codificado)
+```
+
+* Ahora actualizando el dataframe original
+
+```
+import pandas as pd
+from sklearn.preprocessing import OneHotEncoder
+
+df = pd.DataFrame({
+    "nivel_educativo" : ["Primaria", "Secundaria", "Terciario", "Universitario", "Primaria", "Secundaria", "Terciario", "Universitario", "Universitario", "Secundaria"],
+    "genero" : ["M", "F", "M", "F", "M", "F", "M", "F", "M", "F"],
+    "color" : ["Rojo", "Azul", "Verde", "Amarillo", "Rojo", "Azul", "Verde", "Amarillo", "Rojo", "Azul"]
+})
+
+
+print("Original")
+print(df.head(3))
+print("---------------------------")
+
+codificador = OneHotEncoder(sparse_output=False, drop="first") 
+
+df_columnas_nuevas = codificador.fit_transform(df[["color"]])
+nombres_columnas_nuevas = codificador.get_feature_names_out(["color"])
+
+df[nombres_columnas_nuevas] = df_columnas_nuevas
+
+print(df.head(3))
+
+print("---------------------------")
+# Borro el color
+df.drop(columns=["color"], inplace=True)
+print(df.head(3))
+```
+
+---
+
+## Ejercicio Integrador
+
+* Entrenar un modelo de ML Basado en arboles utilizando encodings de las variables
+
+* Armando el data set
+
+```
+import pandas as pd
+
+df = pd.DataFrame({
+    'nivel_educativo': ['Secundario', 'Universitario', 'Posgrado', 'Universitario',
+                         'Secundario', 'Posgrado', 'Universitario', 'Secundario'],
+    'tipo_empleo': ['Relacion_dependencia', 'Independiente', 'Relacion_dependencia', 'Independiente',
+                     'Independiente', 'Relacion_dependencia', 'Relacion_dependencia', 'Independiente'],
+    'ingreso_mensual': [45000, 62000, 90000, 55000, 38000, 105000, 71000, 41000],
+    'aprobado': ['No', 'Si', 'Si', 'Si', 'No', 'Si', 'Si', 'No']
+})
+
+df
+```
+
+* Codificamos con orfinal encoder nivel_educativo y aprobado
+
+```
+from sklearn.preprocessing import OrdinalEncoder
+
+codificador_nivel_educativo = OrdinalEncoder(categories=[["Secundario", "Universitario", "Posgrado"]])
+df[["nivel_educativo"]] = codificador_nivel_educativo.fit_transform(df[["nivel_educativo"]])
+
+codifiador_aprobado = OrdinalEncoder(categories=[["No", "Si"]])
+df[["aprobado"]] = codifiador_aprobado.fit_transform(df[["aprobado"]])
+
+df
+```
+
+* Codificamos con OneHotEncoder el tipo_de_empleo
+
+  > [!NOTE]
+  > Como tiene solo dos posibilidades, podemos usar el ordinal encoder, da igual
+  > Pero lo hicimos asi para tener un ejemplo de cada uno
+
+```python
+# Ahora vamos a codificar la columna tipo_empleo usando OneHotEncoder
+# En este caso podria usar tambien OrdinalEncoder, porque los tipos de empleo son 2
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder
+
+codificador_tipo_empleo = OneHotEncoder(sparse_output=False, drop="first")
+df_columnas_nuevas = codificador_tipo_empleo.fit_transform(df[["tipo_empleo"]])
+nombres_columnas_nuevas = codificador_tipo_empleo.get_feature_names_out(["tipo_empleo"])
+df[nombres_columnas_nuevas] = df_columnas_nuevas
+df.drop(columns=["tipo_empleo"], inplace=True)
+df
+```
+
+* Defino mis features y mis labels (X e y)
+
+```
+
+X = df.drop(columns=["aprobado"])
+y = df["aprobado"]
+
+print("X:")
+print(X)
+print("y:")
+print(y)
+```
+
+* Entreno un arbol de decision
+
+```
+from sklearn.tree import DecisionTreeClassifier
+
+modelo = DecisionTreeClassifier()
+modelo.fit(X, y)
+```
+
+* Visualizar el arbol como texto
+
+```
+from sklearn.tree import export_text
+
+reglas = export_text(modelo, feature_names=list(X.columns))
+print(reglas)
+```
+
+* Visualizer el arbol con matplotlib
+
+```
+import matplotlib.pyplot as plt
+from sklearn.tree import plot_tree
+
+plt.figure(figsize=(12, 6))
+plot_tree(modelo,
+          feature_names=X.columns,
+          class_names=['No aprobado', 'Aprobado'],
+          filled=True,
+          rounded=True)
+plt.show()
+```

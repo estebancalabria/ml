@@ -1,0 +1,340 @@
+# LAB-780 - Clustering con Scikit-Learn
+
+## Objetivos
+
+- Comprender qué es el aprendizaje no supervisado.
+- Construir un dataset sintético utilizando pandas.
+- Agrupar observaciones mediante K-Means.
+- Visualizar los clusters generados.
+- Interpretar los centroides obtenidos.
+- Comprender cómo influye la cantidad de clusters elegida.
+
+---
+
+# ¿Qué es el Clustering?
+
+A diferencia de los problemas de clasificación y regresión, en el aprendizaje no supervisado **no existe una variable objetivo**.
+
+El objetivo consiste en descubrir grupos naturales dentro de los datos.
+
+Uno de los algoritmos más utilizados para este propósito es **K-Means**, que intenta encontrar grupos de observaciones similares.
+
+En este laboratorio simularemos un conjunto de clientes utilizando dos variables:
+
+- Edad
+- Gasto mensual
+
+A partir de estos datos, K-Means intentará descubrir automáticamente distintos perfiles de clientes.
+
+---
+
+# Dataset
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+clientes = pd.DataFrame({
+    "Edad": [
+        20,22,23,24,
+        45,46,47,48,
+        33,34,35,36
+    ],
+    "Gasto": [
+        180,200,170,210,
+        950,980,920,1000,
+        520,540,500,560
+    ]
+})
+
+clientes
+```
+
+---
+
+# Visualización inicial
+
+Antes de ejecutar cualquier algoritmo observemos los datos.
+
+```python
+plt.figure(figsize=(7,5))
+
+plt.scatter(
+    clientes["Edad"],
+    clientes["Gasto"],
+    s=80
+)
+
+plt.xlabel("Edad")
+plt.ylabel("Gasto mensual")
+plt.title("Clientes")
+plt.grid()
+
+plt.show()
+```
+
+## Pregunta
+
+Antes de continuar...
+
+**¿Cuántos grupos creés que existen?**
+
+No hay una respuesta correcta.
+
+Simplemente observá el gráfico e intentá estimarlo.
+
+---
+
+# Entrenando K-Means
+
+```python
+from sklearn.cluster import KMeans
+
+modelo = KMeans(
+    n_clusters=3,
+    random_state=42
+)
+
+clientes["Cluster"] = modelo.fit_predict(
+    clientes[["Edad", "Gasto"]]
+)
+
+clientes
+```
+
+---
+
+# Visualización de los clusters
+
+```python
+plt.figure(figsize=(7,5))
+
+plt.scatter(
+    clientes["Edad"],
+    clientes["Gasto"],
+    c=clientes["Cluster"],
+    s=80
+)
+
+plt.scatter(
+    modelo.cluster_centers_[:,0],
+    modelo.cluster_centers_[:,1],
+    marker="X",
+    s=250
+)
+
+plt.xlabel("Edad")
+plt.ylabel("Gasto mensual")
+plt.title("Clusters encontrados por K-Means")
+plt.grid()
+
+plt.show()
+```
+
+---
+
+# Analizando los centroides
+
+Cada "X" representa el centro de un cluster.
+
+Podemos ver sus coordenadas.
+
+```python
+centroides = pd.DataFrame(
+    modelo.cluster_centers_,
+    columns=["Edad","Gasto"]
+)
+
+centroides
+```
+
+## Interpretación
+
+Cada centroide representa el "cliente promedio" de ese grupo.
+
+K-Means asigna cada cliente al centroide más cercano.
+
+---
+
+# ¿Qué ocurre si cambiamos K?
+
+Probemos distintos valores de K.
+
+```python
+for k in [2,3,4]:
+
+    modelo = KMeans(
+        n_clusters=k,
+        random_state=42
+    )
+
+    clientes["Cluster"] = modelo.fit_predict(
+        clientes[["Edad","Gasto"]]
+    )
+
+    plt.figure(figsize=(6,4))
+
+    plt.scatter(
+        clientes["Edad"],
+        clientes["Gasto"],
+        c=clientes["Cluster"],
+        s=80
+    )
+
+    plt.scatter(
+        modelo.cluster_centers_[:,0],
+        modelo.cluster_centers_[:,1],
+        marker="X",
+        s=250
+    )
+
+    plt.title(f"K = {k}")
+
+    plt.xlabel("Edad")
+    plt.ylabel("Gasto mensual")
+
+    plt.grid()
+
+    plt.show()
+```
+
+---
+
+# Consignas (responder por escrito)
+
+## 1. ¿Qué significa que K-Means sea un algoritmo no supervisado?
+
+**Respuesta esperada:**
+
+Significa que el algoritmo no dispone de una columna objetivo (target) que indique a qué grupo pertenece cada observación. En lugar de aprender a partir de ejemplos etiquetados, intenta descubrir automáticamente patrones o agrupaciones naturales presentes en los datos.
+
+---
+
+## 2. ¿Qué representan las "X" que aparecen en el gráfico?
+
+**Respuesta esperada:**
+
+Las "X" representan los centroides de cada cluster. Un centroide es el punto central del grupo y resume la posición promedio de todas las observaciones que pertenecen a ese cluster. K-Means asigna cada registro al centroide más cercano.
+
+---
+
+## 3. ¿Qué ocurre al aumentar el valor de K?
+
+**Respuesta esperada:**
+
+Al aumentar K se generan más grupos, por lo que cada cluster contiene menos observaciones y resulta más específico. Si K es demasiado grande, pueden aparecer clusters muy pequeños o dividir artificialmente grupos que en realidad pertenecen al mismo conjunto.
+
+---
+
+## 4. ¿Existe un valor de K "correcto"?
+
+**Respuesta esperada:**
+
+No necesariamente. El número de clusters depende del problema de negocio y de la estructura de los datos. En la práctica suelen utilizarse técnicas como el **Método del Codo (Elbow Method)** o la **métrica Silhouette** para ayudar a elegir un valor adecuado.
+
+---
+
+## 5. ¿Qué variables utilizó K-Means para formar los grupos?
+
+**Respuesta esperada:**
+
+En este laboratorio únicamente utilizó las variables **Edad** y **Gasto mensual**. A partir de esas dos características calculó la similitud entre los clientes y construyó los clusters.
+
+---
+
+# Conclusiones esperadas
+
+- K-Means es uno de los algoritmos de clustering más utilizados.
+- Es un algoritmo de aprendizaje no supervisado, ya que no necesita una variable objetivo.
+- Cada observación se asigna al centroide más cercano.
+- El número de clusters debe definirse antes del entrenamiento.
+- Elegir un buen valor de K es una parte importante del proceso de modelado.
+
+---
+
+# Código completo
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+
+# -----------------------------
+# Dataset
+# -----------------------------
+
+clientes = pd.DataFrame({
+    "Edad":[20,22,23,24,45,46,47,48,33,34,35,36],
+    "Gasto":[180,200,170,210,950,980,920,1000,520,540,500,560]
+})
+
+# -----------------------------
+# Datos originales
+# -----------------------------
+
+plt.figure(figsize=(7,5))
+
+plt.scatter(
+    clientes["Edad"],
+    clientes["Gasto"],
+    s=80
+)
+
+plt.xlabel("Edad")
+plt.ylabel("Gasto mensual")
+plt.title("Clientes")
+plt.grid()
+
+plt.show()
+
+# -----------------------------
+# K-Means
+# -----------------------------
+
+modelo = KMeans(
+    n_clusters=3,
+    random_state=42
+)
+
+clientes["Cluster"] = modelo.fit_predict(
+    clientes[["Edad","Gasto"]]
+)
+
+# -----------------------------
+# Resultado
+# -----------------------------
+
+plt.figure(figsize=(7,5))
+
+plt.scatter(
+    clientes["Edad"],
+    clientes["Gasto"],
+    c=clientes["Cluster"],
+    s=80
+)
+
+plt.scatter(
+    modelo.cluster_centers_[:,0],
+    modelo.cluster_centers_[:,1],
+    marker="X",
+    s=250
+)
+
+plt.xlabel("Edad")
+plt.ylabel("Gasto mensual")
+plt.title("Clusters encontrados por K-Means")
+plt.grid()
+
+plt.show()
+
+# -----------------------------
+# Centroides
+# -----------------------------
+
+centroides = pd.DataFrame(
+    modelo.cluster_centers_,
+    columns=["Edad","Gasto"]
+)
+
+print(centroides)
+```

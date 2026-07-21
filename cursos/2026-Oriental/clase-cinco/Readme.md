@@ -226,3 +226,7 @@ print(X)
 print("X_train:")
 print(X_train)
 ``` 
+
+* Para hacer cross validation vamos variando los valores de
+ * random_state : Para que me de una division distinta
+ * test_size : Para variar el tamanio entre la muestra e entreamiento y validacion

@@ -1304,3 +1304,11 @@ Modelo                       MAE     MSE     RMSE    R2
 df = pd.read_csv("https://raw.githubusercontent.com/estebancalabria/ml/refs/heads/main/datasets/titanic.csv")
 df.info()
 ```
+
+### EDA (Exploratory Data Analysis)
+
+* Veo si hay valores nulos
+```
+print(df.shape)
+print(df.isnull().sum())
+```
